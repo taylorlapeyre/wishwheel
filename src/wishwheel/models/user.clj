@@ -17,8 +17,7 @@
 
 (defn secure-insert!
   [user]
-  (when (validate user)
-    (insert! (assoc user :password (password/encrypt (:password user))))))
+  (insert! (assoc user :password (password/encrypt (:password user)))))
 
 (defn authenticate
   [email pswd]
