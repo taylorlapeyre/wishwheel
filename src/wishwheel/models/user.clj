@@ -1,6 +1,7 @@
 (ns wishwheel.models.user
   (:require [yesql.core :refer [defqueries]]
             [wishwheel.database :refer [db]]
+            [crypto.password.bcrypt :as password]
             [schema.core :as s]))
 
 (defqueries "sql/users.sql"
@@ -12,4 +13,21 @@
                 :password   s/Str
                 :first_name s/Str
                 :last_name  s/Str}]
-    (s/validate user schema)))
+    (s/validate schema user)))
+
+(defn secure-insert!
+  [user]
+  (when (validate user)
+    (insert! (assoc user :password (password/encrypt (:password user))))))
+
+(defn authenticate
+  [email pswd]
+  (let [user (first (find-by-email {:email email}))]
+    (when-not (nil? user)
+      (password/check pswd (:password user)))))
+
+(defn valid-token?
+  [id token]
+  (let [user (first (find-by-id {:id id}))]
+    (when-not (nil? user)
+      (= token (:token user)))))

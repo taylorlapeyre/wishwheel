@@ -9,6 +9,7 @@
                  [cheshire "5.3.1"]
                  [ring/ring-core "1.2.0"]
                  [ring/ring-json "0.2.0"]
+                 [crypto-password "0.1.3"]
                  [compojure "1.2.1"]
                  [prismatic/schema "0.3.1"]]
   :plugins [[lein-ring "0.7.1"]]

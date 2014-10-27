@@ -1,0 +1,65 @@
+/*
+-l stands for light
+-d stands for dark
+*/
+* {
+  box-sizing: border-box;
+}
+.outline {
+  border: 1px solid black;
+}
+body {
+  background-color: #ffffff;
+}
+.state {
+  margin-left: 10px;
+}
+.logocolor {
+  background-color: #5e0031;
+}
+.btn-primary {
+  background-color: #91004c;
+  border-color: #5e0031;
+}
+.btn-primary:hover {
+  background-color: #78003e;
+  border-color: #5e0031;
+}
+.center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.form-control {
+  margin-bottom: 10px;
+  resize: none;
+}
+#quickmenu {
+  font-size: 2em;
+}
+.menu-line {
+  border-bottom: 1px solid black;
+  height: 10px;
+}
+.login-input {
+  border-radius: 10px;
+}
+.control-label {
+  text-align: right;
+}
+.radial-btn {
+  display: block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: #91004c;
+  text-align: center;
+  border-color: #5e0031;
+  margin: 5px;
+}
+.radial-btn:hover {
+  background-color: #78003e;
+  border-color: #5e0031;
+}
+.radial-btn:active {
+  border: none;
+}
