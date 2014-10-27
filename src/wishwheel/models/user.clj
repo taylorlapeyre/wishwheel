@@ -1,6 +1,6 @@
 (ns wishwheel.models.user
   (:require [yesql.core :refer [defqueries]]
-            [wishwheel.database :refer [db]]
+            [wishwheel.config :refer [db]]
             [crypto.password.bcrypt :as password]
             [schema.core :as s]))
 
@@ -22,9 +22,10 @@
 
 (defn authenticate
   [email pswd]
+  (println "Authenticating " email)
   (let [user (first (find-by-email {:email email}))]
-    (when-not (nil? user)
-      (password/check pswd (:password user)))))
+    (when (and (not (nil? user)) (password/check pswd (:password user)))
+      user)))
 
 (defn valid-token?
   [id token]

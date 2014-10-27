@@ -1,6 +1,6 @@
 (ns wishwheel.models.wheel
   (:require [yesql.core :refer [defqueries]]
-            [wishwheel.database :refer [db]]
+            [wishwheel.config :refer [db]]
             [schema.core :as s]))
 
 (defqueries "sql/wheels.sql"
