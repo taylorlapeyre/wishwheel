@@ -3,6 +3,7 @@
             [wishwheel.models.user :as user]))
 
 (defn show
+  "Returns a json representation of the item with a given id."
   [email]
   (let [user (first (user/find-by-email {:email email}))]
     (if (nil? user)
@@ -10,6 +11,7 @@
       (response user))))
 
 (defn create
+  "Creates a new user, encrypts their password, and generate their API token."
   [user-params]
   (try
     (user/validate user-params)
@@ -19,6 +21,7 @@
       {:status 422 :body (.getMessage e)})))
 
 (defn auth
+  "Given an email and password, finds the user with matching credentials."
   [email password]
   (let [maybe-user (user/authenticate email password)]
     (if maybe-user

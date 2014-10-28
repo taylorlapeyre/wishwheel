@@ -89,6 +89,7 @@
   (route/not-found "Page not found"))
 
 (def app
+  "This is the handler for HTTP requests."
   (-> (handler/site main-routes)
       (middleware/wrap-json-body {:keywords? true})
       (middleware/wrap-json-response)))

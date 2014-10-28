@@ -4,12 +4,14 @@
 
 (defn show
   [id]
+  "Returns a json representation of the wheel with a given id."
   (let [wheel (first (wheel/find-by-id {:id id}))]
     (if (nil? wheel)
       {:status 404 :body "Wheel does not exist"}
       (response wheel))))
 
 (defn create
+  "Creates a new wheel."
   [wheel-params]
   (try
     (wheel/validate wheel-params)

@@ -19,22 +19,28 @@
   (s/validate schema user))
 
 (defn secure-insert!
+  "Encrypt the user's password and insert the resulting information"
   [user]
   (insert! (assoc user :password (bcrypt/encrypt (:password user)))))
 
 (defn authenticate
+  "Given an email and password, finds the user with matching credentials."
   [email pswd]
   (let [user (first (find-by-email {:email email}))]
     (when (and user (bcrypt/check pswd (:password user)))
       user)))
 
 (defn valid-token?
+  "Given a user id and api token, finds the user with the id and determines
+  if the given token matches."
   [id token]
   (let [user (first (find-by-id {:id id}))]
-    (when-not (nil? user)
+    (when user
       (= token (:token user)))))
 
 (defn can-be-assigned-to-item?
+  "Returns true if the group that the item's wheel belongs to includes
+  the given user."
   [user item]
   (let [item-wheel (first (wheel/find-by-id {:id (:wheel_id item)}))
         users-in-wheel-group (into #{}
