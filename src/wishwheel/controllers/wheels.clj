@@ -6,7 +6,7 @@
   [id]
   (let [wheel (first (wheel/find-by-id {:id id}))]
     (if (nil? wheel)
-      {:status 404 :body ""}
+      {:status 404 :body "Wheel does not exist"}
       (response wheel))))
 
 (defn create

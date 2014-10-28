@@ -6,8 +6,9 @@
 (defqueries "sql/groups.sql"
   {:connection db})
 
+(def schema {:name    s/Str
+             :user_id s/Int})
+
 (defn validate
   [group]
-  (let [schema {:name     s/Str
-                :user_id  s/Int}]
-    (s/validate schema group)))
+  (s/validate schema group))

@@ -6,9 +6,10 @@
 (defqueries "sql/wheels.sql"
   {:connection db})
 
+(def schema {:name     s/Str
+             :group_id s/Int
+             :user_id  s/Int})
+
 (defn validate
   [wheel]
-  (let [schema {:name     s/Str
-                :group_id s/Int
-                :user_id  s/Int}]
-    (s/validate wheel schema)))
+  (s/validate wheel schema))
