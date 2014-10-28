@@ -1,9 +1,12 @@
 (ns wishwheel.core
+  (:gen-class)
   (:use compojure.core)
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
             [ring.middleware.json :as middleware]
             [ring.util.response :refer [resource-response]]
+            [environ.core :refer [env]]
+            [ring.adapter.jetty :as jetty]
             [wishwheel.controllers.users  :as users-controller]
             [wishwheel.controllers.wheels :as wheels-controller]
             [wishwheel.controllers.items  :as items-controller]
@@ -89,3 +92,10 @@
   (-> (handler/site main-routes)
       (middleware/wrap-json-body {:keywords? true})
       (middleware/wrap-json-response)))
+
+(defn -main
+  "This is the entry point into the application. It runs the server."
+  [& [port]]
+  (let [chosen-port (or port (env :port) "3000")
+        parse-int #(Integer/parseInt (re-find #"\A-?\d+" %))]
+    (jetty/run-jetty app {:port (parse-int chosen-port) :join? false})))
