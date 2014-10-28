@@ -19,8 +19,8 @@ Tests are located in `test`.
 
 Make sure that you have **Java** installed.
 
-Make sure that you have **mysql** running and have created a database
-called `wishlist3`.
+Make sure that you have **MySQL** running and have created a database
+called `wishwheel3`.
 
 1. Download [Leiningen](http://leiningen.org)
   ``` bash
