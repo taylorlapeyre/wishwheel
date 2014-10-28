@@ -29,6 +29,6 @@
     (if (nil? item)
       {:status 404 :body "Item does not exist"}
       (do
-        (item/update! (merge {:id id} item-data))
+        (item/assign-user! {:id id :user_id (:user_id item-data))
         (let [item (first (item/find-by-id {:id id}))]
           (response item))))))

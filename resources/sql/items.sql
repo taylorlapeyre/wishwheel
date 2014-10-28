@@ -16,7 +16,7 @@ VALUES (:name, :price, :wheel_id, :user_id);
 INSERT INTO items (name, price, wheel_id)
 VALUES (:name, :price, :wheel_id);
 
--- name: update!
+-- name: assign-user!
 UPDATE items
 SET user_id = :user_id
 WHERE id = :id;
