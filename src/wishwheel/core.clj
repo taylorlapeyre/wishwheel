@@ -4,9 +4,10 @@
             [compojure.handler :as handler]
             [ring.middleware.json :as middleware]
             [ring.util.response :refer [resource-response]]
-            [wishwheel.controllers.users :as users-controller]
+            [wishwheel.controllers.users  :as users-controller]
             [wishwheel.controllers.wheels :as wheels-controller]
-            [wishwheel.controllers.items :as items-controller]))
+            [wishwheel.controllers.items  :as items-controller]
+            [wishwheel.controllers.groups :as groups-controller]))
 
 (defroutes main-routes
   (GET "/" []
@@ -33,7 +34,7 @@
     (items-controller/show id))
 
   (PATCH "/items/:id"
-    {body :body, params :params}
+    {body :body params :params}
     (items-controller/update (:id params) (:item body)))
 
   (GET "/wheels/:id/items"
@@ -43,6 +44,18 @@
   (POST "/auth"
     {body :body}
     (users-controller/auth (:email body) (:password body)))
+
+  (GET "/groups/:id"
+    [id]
+    (groups-controller/show id))
+
+  (GET "/users/:id/groups"
+    [id]
+    (groups-controller/index id))
+
+  (POST "/groups/:id/adduser"
+    {body :body params :params}
+    (groups-controller/add-user (:id params) (:user_id body)))
 
   (route/resources "/")
   (route/not-found "Page not found"))
