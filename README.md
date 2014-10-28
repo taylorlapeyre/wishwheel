@@ -33,7 +33,7 @@ called `wishwheel3`.
   $ lein
   ```
 2. Clone this repository
-3. Reset your database tables: `$ mysql -uroot wishlist3 < resources/sql/reset.sql`
+3. Reset your database tables: `$ mysql -uroot wishwheel3 < resources/sql/reset.sql`
 4. `lein run`
 
 The website will be available on localhost:3000
