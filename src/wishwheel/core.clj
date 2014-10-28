@@ -13,6 +13,9 @@
   (GET "/" []
     (resource-response "index.html" {:root "public"}))
 
+  (comment ========================================================)
+
+  ; Wheel Resources
   (GET "/wheels/:id"
     [id]
     (wheels-controller/show id))
@@ -21,6 +24,9 @@
     {body :body}
     (wheels-controller/create (:wheel body)))
 
+  (comment ========================================================)
+
+  ; User Resources
   (GET "/users/:email"
     [email]
     (users-controller/show email))
@@ -29,6 +35,9 @@
     {body :body}
     (users-controller/create (:user body)))
 
+  (comment ========================================================)
+
+  ; Item Resources
   (GET "/items/:id"
     [id]
     (items-controller/show id))
@@ -37,17 +46,24 @@
     {body :body params :params}
     (items-controller/update (:id params) (:item body)))
 
+  (POST "/wheel/:id/items"
+    {body :body params :params}
+    (items-controller/create (:id params) (:item body)))
+
   (GET "/wheels/:id/items"
     [id]
     (items-controller/index id))
 
-  (POST "/auth"
-    {body :body}
-    (users-controller/auth (:email body) (:password body)))
+  (comment ========================================================)
 
+  ; Group Resources
   (GET "/groups/:id"
     [id]
     (groups-controller/show id))
+
+  (POST "/groups"
+    {body :body}
+    (groups-controller/create (:group body)))
 
   (GET "/users/:id/groups"
     [id]
@@ -56,6 +72,15 @@
   (POST "/groups/:id/adduser"
     {body :body params :params}
     (groups-controller/add-user (:id params) (:user_id body)))
+
+  (comment ========================================================)
+
+  ; Authentication Resource
+  (POST "/auth"
+    {body :body}
+    (users-controller/auth (:email body) (:password body)))
+
+  (comment ========================================================)
 
   (route/resources "/")
   (route/not-found "Page not found"))

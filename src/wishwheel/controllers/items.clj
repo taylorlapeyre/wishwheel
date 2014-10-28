@@ -14,6 +14,15 @@
       {:status 404 :body "Item does not exist"}
       (response item))))
 
+(defn create
+  [wheel-id item-params]
+  (try
+    (item/validate item-params)
+    (item/insert! (merge {:wheel_id wheel-id} item-params))
+    {:status 201 :body item-params}
+    (catch java.lang.AssertionError e
+      {:status 422 :body (.getMessage e)})))
+
 (defn update
   [id item-data]
   (let [item (first (item/find-by-id {:id id}))]
