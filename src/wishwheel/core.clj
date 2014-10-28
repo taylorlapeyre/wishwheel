@@ -16,7 +16,7 @@
   (GET "/" []
     (resource-response "index.html" {:root "public"}))
 
-  (comment ========================================================)
+  ; ========================================================
 
   ; Wheel Resources
   (GET "/wheels/:id"
@@ -25,9 +25,9 @@
 
   (POST "/wheels"
     {body :body}
-    (wheels-controller/create (:wheel body)))
+    (wheels-controller/create (:token body) (:wheel body)))
 
-  (comment ========================================================)
+  ; ========================================================
 
   ; User Resources
   (GET "/users/:email"
@@ -38,7 +38,7 @@
     {body :body}
     (users-controller/create (:user body)))
 
-  (comment ========================================================)
+  ; ========================================================
 
   ; Item Resources
   (GET "/items/:id"
@@ -47,17 +47,17 @@
 
   (PATCH "/items/:id"
     {body :body params :params}
-    (items-controller/update (:id params) (:item body)))
+    (items-controller/update (:token body) (:id params) (:item body)))
 
   (POST "/wheel/:id/items"
     {body :body params :params}
-    (items-controller/create (:id params) (:item body)))
+    (items-controller/create (:token body) (:id params) (:item body)))
 
   (GET "/wheels/:id/items"
     [id]
     (items-controller/index id))
 
-  (comment ========================================================)
+  ; ========================================================
 
   ; Group Resources
   (GET "/groups/:id"
@@ -66,7 +66,7 @@
 
   (POST "/groups"
     {body :body}
-    (groups-controller/create (:group body)))
+    (groups-controller/create (:token body) (:group body)))
 
   (GET "/users/:id/groups"
     [id]
@@ -74,16 +74,16 @@
 
   (POST "/groups/:id/adduser"
     {body :body params :params}
-    (groups-controller/add-user (:id params) (:user_id body)))
+    (groups-controller/add-user (:token body) (:id params) (:user_id body)))
 
-  (comment ========================================================)
+  ; ========================================================
 
   ; Authentication Resource
   (POST "/auth"
     {body :body}
     (users-controller/auth (:email body) (:password body)))
 
-  (comment ========================================================)
+  ; ========================================================
 
   (route/resources "/")
   (route/not-found "Page not found"))

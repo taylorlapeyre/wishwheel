@@ -38,6 +38,12 @@
     (when user
       (= token (:token user)))))
 
+(defn when-authenticated [token success-fn]
+  (let [api-user (first (find-by-token {:token token}))]
+    (if-not api-user
+      {:status 403 :body "Unauthorized"}
+      (success-fn api-user))))
+
 (defn can-be-assigned-to-item?
   "Returns true if the group that the item's wheel belongs to includes
   the given user."

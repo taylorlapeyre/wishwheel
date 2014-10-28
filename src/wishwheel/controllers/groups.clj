@@ -9,7 +9,7 @@
   (let [user (first (user/find-by-email {:email email}))]
     (if (nil? user)
       {:status 404 :body "User does not exist"}
-      (let [groups (find-by-user {:user_id (:user_id user)})]
+      (let [groups (group/find-by-user {:user_id (:user_id user)})]
         (response groups)))))
 
 (defn show
@@ -22,21 +22,22 @@
 
 (defn create
   "Creates a new group."
-  [group-params]
-  (try
-    (group/validate group-params)
-    (group/insert! group-params)
-    {:status 201 :body group-params}
-    (catch java.lang.AssertionError e
-      {:status 422 :body (.getMessage e)})))
+  [token group-params]
+  (user/when-authenticated token (fn [api-user]
+    (try
+      (group/validate group-params)
+      (group/insert! group-params)
+      {:status 201 :body group-params}
+      (catch Exception e
+        {:status 422 :body (.getMessage e)})))))
 
 (defn add-user
   "Relates a given group id and a user id in the table users_groups."
-  [id user_id]
-  (let [group (first (group/find-by-id {:id id}))]
-    (if (nil? group)
-      {:status 404 :body "Group does not exist"}
-      (do
-        (group/add-user! {:id id :user_id user_id})
-        (let [group (first (group/find-by-id {:id id}))]
-          (response group))))))
+  [token id user_id]
+  (user/when-authenticated token (fn [api-user]
+    (let [group (first (group/find-by-id {:id id}))]
+      (if (nil? group)
+        {:status 404 :body "Group does not exist"}
+        (do
+          (group/add-user! {:id id :user_id user_id})
+          (response (first (group/find-by-id {:id id})))))))))

@@ -1,6 +1,7 @@
 (ns wishwheel.controllers.wheels
   (:require [ring.util.response :refer [resource-response response]]
-            [wishwheel.models.wheel :as wheel]))
+            [wishwheel.models.wheel :as wheel]
+            [wishwheel.models.user :as user]))
 
 (defn show
   [id]
@@ -12,10 +13,11 @@
 
 (defn create
   "Creates a new wheel."
-  [wheel-params]
-  (try
-    (wheel/validate wheel-params)
-    (wheel/insert! wheel-params)
-    {:status 201 :body wheel-params}
-    (catch java.lang.AssertionError e
-      {:status 422 :body (.getMessage e)})))
+  [token wheel-params]
+  (user/when-authenticated token (fn [api-user]
+    (try
+      (wheel/validate wheel-params)
+      (wheel/insert! wheel-params)
+      {:status 201 :body wheel-params}
+      (catch java.lang.AssertionError e
+        {:status 422 :body (.getMessage e)})))))
