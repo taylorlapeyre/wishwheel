@@ -1,14 +1,22 @@
-# wishwheel
+# Wish Wheel
 
-A Clojure library designed to ... well, that part is up to you.
+Wish Wheel is a website designed to help you find gifts for other people, and to make it easy for others to find the perfect gift for you.
 
-## Usage
+## Getting Up & Running
 
-FIXME
+First, make sure that you have **Java** installed.
 
-## License
+1. Download [Leiningen](http://leiningen.org)
+  ``` bash
+  # OSX
+  $ brew install leiningen
 
-Copyright © 2014 FIXME
+  # Linux
+  $ curl -O https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+  $ mv lein ~/bin/lein && chmod a+x ~/bin/lein
+  $ lein
+  ```
+2. Clone this repository
+3. `$ lein ring server-headless`
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+The website will be available on localhost:3000

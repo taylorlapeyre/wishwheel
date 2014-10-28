@@ -6,7 +6,6 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [yesql "0.5.0-beta2"]
                  [mysql/mysql-connector-java "5.1.32"]
-                 [cheshire "5.3.1"]
                  [ring/ring-core "1.2.0"]
                  [ring/ring-json "0.2.0"]
                  [crypto-password "0.1.3"]
