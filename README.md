@@ -13,7 +13,10 @@ Wish Wheel is a website designed to help you find gifts for other people, and to
 
 ## Getting Up & Running
 
-First, make sure that you have **Java** installed.
+Make sure that you have **Java** installed.
+
+Make sure that you have **mysql** running and have created a database
+called `wishlist3`.
 
 1. Download [Leiningen](http://leiningen.org)
   ``` bash
@@ -26,6 +29,10 @@ First, make sure that you have **Java** installed.
   $ lein
   ```
 2. Clone this repository
-3. `$ lein ring server-headless`
+3. Reset your database:
+  ``` bash
+  $ mysql -uroot wishlist3 < resources/sql/reset.sql
+  ```
+4. `lein run`
 
 The website will be available on localhost:3000
