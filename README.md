@@ -2,6 +2,15 @@
 
 Wish Wheel is a website designed to help you find gifts for other people, and to make it easy for others to find the perfect gift for you.
 
+## Code Organization
+
+- Front-end code is located in `resources/public`.
+- SQL is located in `resources/sql`.
+- Back-end code is located in `src`.
+- Documentation is located in `doc`.
+- Tests are located in `test`.
+
+
 ## Getting Up & Running
 
 First, make sure that you have **Java** installed.
