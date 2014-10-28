@@ -1,21 +1,19 @@
-(ns wishwheel.controllers.items
-  (:require [ring.util.response :refer [resource-response response]]
+(ns wishwheel.handlers.items
+  (:require [ring.util.response :refer [response status not-found]]
             [wishwheel.models.item :as item]
             [wishwheel.models.user :as user]))
 
 (defn index
   "Given a valid wheel id, returns all items that belong to that wheel."
   [wheel-id]
-  (let [items (item/find-by-wheel {:wheel_id wheel-id})]
-    (response items)))
+  (response (item/find-by-wheel {:wheel_id wheel-id})))
 
 (defn show
   "Returns a json representation of the item with a given id."
   [id]
-  (let [item (first (item/find-by-id {:id id}))]
-    (if (nil? item)
-      {:status 404 :body "Item does not exist"}
-      (response item))))
+  (if-let [item (first (item/find-by-id {:id id}))]
+    (response item)
+    (not-found "Item does not exist")))
 
 (defn create
   "Creates a new item in a given wheel."
@@ -24,18 +22,16 @@
     (try
       (item/validate item-params)
       (item/insert! (merge {:wheel_id wheel-id} item-params))
-      {:status 201 :body item-params}
+      (status (response item-params) 201)
       (catch java.lang.AssertionError e
-        {:status 422 :body (.getMessage e)})))))
+        (status (response (.getMessage e) 422)))))))
 
 (defn update
   "Assigns an item to another user. Will only look for user_id in item-data."
   [token id item-data]
   (user/when-authenticated token (fn [api-user]
-    (let [item (first (item/find-by-id {:id id}))]
-      (if (nil? item)
-        {:status 404 :body "Item does not exist"}
-        (do
-          (item/assign-user! {:id id :user_id (:user_id item-data)})
-          (let [item (first (item/find-by-id {:id id}))]
-            (response item))))))))
+    (if-let [item (first (item/find-by-id {:id id}))]
+      (do
+        (item/assign-user! {:id id :user_id (:user_id item-data)})
+        (response (first (item/find-by-id {:id id}))))
+      (not-found "Item does not exist")))))

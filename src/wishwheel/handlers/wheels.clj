@@ -1,15 +1,14 @@
-(ns wishwheel.controllers.wheels
-  (:require [ring.util.response :refer [resource-response response]]
+(ns wishwheel.handlers.wheels
+  (:require [ring.util.response :refer [response status not-found]]
             [wishwheel.models.wheel :as wheel]
             [wishwheel.models.user :as user]))
 
 (defn show
   [id]
   "Returns a json representation of the wheel with a given id."
-  (let [wheel (first (wheel/find-by-id {:id id}))]
-    (if (nil? wheel)
-      {:status 404 :body "Wheel does not exist"}
-      (response wheel))))
+  (if-let [wheel (first (wheel/find-by-id {:id id}))]
+    (response wheel)
+    (not-found "Wheel does not exist")))
 
 (defn create
   "Creates a new wheel."
@@ -18,6 +17,7 @@
     (try
       (wheel/validate wheel-params)
       (wheel/insert! wheel-params)
-      {:status 201 :body wheel-params}
+      (let [created-wheel (first (wheel/find-by-id {:id (:id wheel-params)}))]
+        (status (response created-wheel) 201))
       (catch java.lang.AssertionError e
         {:status 422 :body (.getMessage e)})))))

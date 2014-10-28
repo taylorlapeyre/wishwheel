@@ -1,102 +1,105 @@
 (ns wishwheel.core
   (:gen-class)
-  (:use compojure.core)
-  (:require [compojure.route :as route]
-            [compojure.handler :as handler]
-            [ring.middleware.json :as middleware]
+  (:use compojure.core
+        [ring.middleware.json])
+  (:require [ring.adapter.jetty :as jetty-adapter]
             [ring.util.response :refer [resource-response]]
+            [compojure.route   :as route]
+            [compojure.handler :as handler]
             [environ.core :refer [env]]
-            [ring.adapter.jetty :as jetty]
-            [wishwheel.controllers.users  :as users-controller]
-            [wishwheel.controllers.wheels :as wheels-controller]
-            [wishwheel.controllers.items  :as items-controller]
-            [wishwheel.controllers.groups :as groups-controller]))
+            [wishwheel.handlers.users  :as user-handlers]
+            [wishwheel.handlers.wheels :as wheel-handlers]
+            [wishwheel.handlers.items  :as item-handlers]
+            [wishwheel.handlers.groups :as group-handlers]))
 
 (defroutes main-routes
   (GET "/" []
     (resource-response "index.html" {:root "public"}))
 
-  ; ========================================================
+  (context "/api" []
 
-  ; Wheel Resources
-  (GET "/wheels/:id"
-    [id]
-    (wheels-controller/show id))
+    ; ========================================================
 
-  (POST "/wheels"
-    {body :body}
-    (wheels-controller/create (:token body) (:wheel body)))
+    ; Wheel Resources
+    (GET "/wheels/:id"
+      [id]
+      (wheel-handlers/show id))
 
-  ; ========================================================
+    (POST "/wheels"
+      {params :params body :body}
+      (wheel-handlers/create (:token body) (:wheel body)))
 
-  ; User Resources
-  (GET "/users/:email"
-    [email]
-    (users-controller/show email))
+    ; ========================================================
 
-  (POST "/users"
-    {body :body}
-    (users-controller/create (:user body)))
+    ; User Resources
+    (GET "/users/:email"
+      [email]
+      (user-handlers/show email))
 
-  ; ========================================================
+    (POST "/users"
+      {params :params body :body}
+      (user-handlers/create (:user body)))
 
-  ; Item Resources
-  (GET "/items/:id"
-    [id]
-    (items-controller/show id))
+    ; ========================================================
 
-  (PATCH "/items/:id"
-    {body :body params :params}
-    (items-controller/update (:token body) (:id params) (:item body)))
+    ; Item Resources
+    (GET "/items/:id"
+      [id]
+      (item-handlers/show id))
 
-  (POST "/wheel/:id/items"
-    {body :body params :params}
-    (items-controller/create (:token body) (:id params) (:item body)))
+    (PATCH "/items/:id"
+      {params :params body :body}
+      (item-handlers/update (:token body) (:id params) (:item body)))
 
-  (GET "/wheels/:id/items"
-    [id]
-    (items-controller/index id))
+    (POST "/wheel/:id/items"
+      {params :params body :body}
+      (item-handlers/create (:token body) (:id params) (:item body)))
 
-  ; ========================================================
+    (GET "/wheels/:id/items"
+      [id]
+      (item-handlers/index id))
 
-  ; Group Resources
-  (GET "/groups/:id"
-    [id]
-    (groups-controller/show id))
+    ; ========================================================
 
-  (POST "/groups"
-    {body :body}
-    (groups-controller/create (:token body) (:group body)))
+    ; Group Resources
+    (GET "/groups/:id"
+      [id]
+      (group-handlers/show id))
 
-  (GET "/users/:id/groups"
-    [id]
-    (groups-controller/index id))
+    (POST "/groups"
+      {params :params body :body}
+      (group-handlers/create (:token body) (:group body)))
 
-  (POST "/groups/:id/adduser"
-    {body :body params :params}
-    (groups-controller/add-user (:token body) (:id params) (:user_id body)))
+    (GET "/users/:id/groups"
+      [id]
+      (group-handlers/index id))
 
-  ; ========================================================
+    (POST "/groups/:id/adduser"
+      {params :params body :body}
+      (group-handlers/add-user (:token body) (:id params) (:user_id body)))
 
-  ; Authentication Resource
-  (POST "/auth"
-    {body :body}
-    (users-controller/auth (:email body) (:password body)))
+    ; ========================================================
 
-  ; ========================================================
+    ; Authentication Resource
+    (POST "/auth"
+      {params :params body :body}
+      (user-handlers/auth (:email body) (:password body))))
+
+    ; ========================================================
 
   (route/resources "/")
-  (route/not-found "Page not found"))
+  (route/not-found "Resource not found"))
 
 (def app
   "This is the handler for HTTP requests."
-  (-> (handler/site main-routes)
-      (middleware/wrap-json-body {:keywords? true})
-      (middleware/wrap-json-response)))
+  (-> (handler/api main-routes)
+      (wrap-json-body {:keywords? true})
+      (wrap-json-response)))
 
 (defn -main
   "This is the entry point into the application. It runs the server."
   [& [port]]
   (let [chosen-port (or port (env :port) "3000")
         parse-int #(Integer/parseInt (re-find #"\A-?\d+" %))]
-    (jetty/run-jetty app {:port (parse-int chosen-port) :join? false})))
+    (jetty-adapter/run-jetty app {:port (parse-int chosen-port)
+                                  :join? false})))
