@@ -4,11 +4,15 @@ Wish Wheel is a website designed to help you find gifts for other people, and to
 
 ## Code Organization
 
-- Front-end code is located in `resources/public`.
-- SQL is located in `resources/sql`.
-- Back-end code is located in `src`.
-- Documentation is located in `doc`.
-- Tests are located in `test`.
+Front end code is located in `resources/public`.
+
+SQL queries are located in `resources/sql`.
+
+Back end code is located in `src`.
+
+Documentation is located in `doc`.
+
+Tests are located in `test`.
 
 
 ## Getting Up & Running
