@@ -34,7 +34,7 @@ CREATE TABLE users (
   password varchar(255) NOT NULL,
   first_name varchar(255) NOT NULL,
   last_name varchar(255) NOT NULL,
-  token varchar(255) NOT NULL UNIQUE,
+  token varchar(255) UNIQUE,
   PRIMARY KEY (id)
 );
 

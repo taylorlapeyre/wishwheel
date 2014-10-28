@@ -8,7 +8,7 @@ SELECT id, name, price, wheel_id, user_id
 FROM items
 WHERE id = :id;
 
--- name: insert-with-user!
+-- name: insert-and-assign-user!
 INSERT INTO items (name, price, wheel_id, user_id)
 VALUES (:name, :price, :wheel_id, :user_id);
 
