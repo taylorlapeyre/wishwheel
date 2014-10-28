@@ -70,9 +70,9 @@
       {params :params body :body}
       (group-handlers/create (:token body) (:group body)))
 
-    (GET "/users/:id/groups"
-      [id]
-      (group-handlers/index id))
+    (GET "/users/:email/groups"
+      [email]
+      (group-handlers/index email))
 
     (POST "/groups/:id/adduser"
       {params :params body :body}

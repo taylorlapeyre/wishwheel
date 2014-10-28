@@ -40,12 +40,11 @@
 
 (defn when-authenticated
   "Finds a user with a matching api token and passes it into the succcess
-  function. If the user is not found, returns a 403 map."
+  function. If the user is not found, returns a 403."
   [token success-fn]
-  (let [api-user (first (find-by-token {:token token}))]
-    (if-not api-user
-      {:status 403 :body "Unauthorized"}
-      (success-fn api-user))))
+  (if-let [api-user (first (find-by-token {:token token}))]
+    (success-fn api-user)
+    {:status 403 :body "Unauthorized"}))
 
 (defn can-be-assigned-to-item?
   "Returns true if the group that the item's wheel belongs to includes

@@ -17,7 +17,7 @@ INSERT INTO users_groups (user_id, group_id)
 VALUES (:user_id, :id);
 
 -- name: find-by-user
-SELECT name, user_id
+SELECT g.name, g.user_id
 FROM groups g
 JOIN users_groups membership ON (
   membership.group_id  = g.id AND

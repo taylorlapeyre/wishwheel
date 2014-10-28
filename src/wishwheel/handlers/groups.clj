@@ -7,9 +7,8 @@
   "Given a user email, returns all groups that the user is a member of."
   [email]
   (if-let [user (first (user/find-by-email {:email email}))]
-    (if-not user
-      (response (group/find-by-user {:user_id (:user_id user)}))
-      (not-found "User does not exist"))))
+    (response (group/find-by-user {:user_id (:user_id user)}))
+    (not-found "User does not exist")))
 
 (defn show
   "Given a group id, returns a json representation of the group."
@@ -20,12 +19,12 @@
 
 (defn create
   "Creates a new group."
-  [token group-params]
+  [token group-data]
   (user/when-authenticated token (fn [api-user]
     (try
-      (group/validate group-params)
-      (group/insert! group-params)
-      (status (response group-params) 201)
+      (group/validate group-data)
+      (group/insert! group-data)
+      (status (response group-data) 201)
       (catch Exception e
         (status (response (.getMessage e)) 422))))))
 
