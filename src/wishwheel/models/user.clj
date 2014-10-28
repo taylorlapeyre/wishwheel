@@ -38,7 +38,10 @@
     (when user
       (= token (:token user)))))
 
-(defn when-authenticated [token success-fn]
+(defn when-authenticated
+  "Finds a user with a matching api token and passes it into the succcess
+  function. If the user is not found, returns a 403 map."
+  [token success-fn]
   (let [api-user (first (find-by-token {:token token}))]
     (if-not api-user
       {:status 403 :body "Unauthorized"}
