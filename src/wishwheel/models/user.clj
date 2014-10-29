@@ -9,14 +9,12 @@
 (defqueries "sql/users.sql"
   {:connection db})
 
-(def schema {:email      s/Str
-             :password   s/Str
-             :first_name s/Str
-             :last_name  s/Str})
-
 (defn validate
   [user]
-  (s/validate schema user))
+  (s/validate {:email      s/Str
+               :password   s/Str
+               :first_name s/Str
+               :last_name  s/Str} user))
 
 (defn secure-insert!
   "Encrypt the user's password and insert the resulting information"
