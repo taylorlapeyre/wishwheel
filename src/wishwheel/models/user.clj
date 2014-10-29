@@ -26,17 +26,16 @@
 (defn authenticate
   "Given an email and password, finds the user with matching credentials."
   [email pswd]
-  (let [user (first (find-by-email {:email email}))]
-    (when (and user (bcrypt/check pswd (:password user)))
+  (when-let [user (first (find-by-email {:email email}))]
+    (when (bcrypt/check pswd (:password user))
       user)))
 
 (defn valid-token?
   "Given a user id and api token, finds the user with the id and determines
   if the given token matches."
   [id token]
-  (let [user (first (find-by-id {:id id}))]
-    (when user
-      (= token (:token user)))))
+  (when-let [user (first (find-by-id {:id id}))]
+    (= token (:token user))))
 
 (defn when-authenticated
   "Finds a user with a matching api token and passes it into the succcess
