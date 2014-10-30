@@ -6,6 +6,11 @@ define([], function () {
         "$state",
         function ($scope,$state) {
             $scope.title = "Wish-list";
+            $scope.RsideBar = false;
+
+            $scope.showSideBar = function(){
+                $scope.RsideBar = !$scope.RsideBar;
+            };
 
 
 

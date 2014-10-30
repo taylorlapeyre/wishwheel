@@ -1,42 +1,44 @@
 <html>
-  <head>
-      <meta charset="utf-8"/>
+<head>
+    <meta charset="utf-8"/>
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.css"/>
     <link href="styles/main.css" rel="stylesheet">
 
-  </head>
-  <body ng-controller="HomeController">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 masthead">
-                <img src="images/WishWheelLogo.png" alt="WishWheel - Logo"/>
-            </div>
-
-            <div id="quickmenu" class="pull-right col-md-1"><img src="images/quickmenu-icon.png" alt="quickmenu"/></div>
-
-
+</head>
+<body ng-controller="HomeController">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 masthead">
+            <img src="images/WishWheelLogo.png" alt="WishWheel - Logo"/>
         </div>
 
+        <ul class="nav">
+            <div id="quickmenu" class="pull-right col-md-1" data-toggle="offcanvas" class="visible-xs text-center"><img
+                    src="images/quickmenu-icon.png" alt="quickmenu"
+                    type="button" class="btn btn-default"
+                    ng-click="showSideBar()"/></div>
 
-        <div class="row">
-
-
-
-
-
-        <div ui-view="main">
-
-        </div>
-
+        </ul>
     </div>
 
-    <script>
-      //window.bootstrappedData = <%= @data || 'null' %>;
-    </script>
-    <script data-main="js/main.js" src="js/lib/requirejs/require.js"></script>
+    <div class="row col-md-9 col-xs-9">
 
 
+        <div ui-view="main"></div>
 
 
-  </body>
+    </div>
+    <div class="sidebar pull-right col-md-3 col-xs-w" ng-show="RsideBar">
+        <ng-include src="'js/modules/partials/sidebar.html'"></ng-include>
+    </div>
+</div>
+
+
+<script>
+    //window.bootstrappedData = <%= @data || 'null' %>;
+</script>
+<script data-main="js/main.js" src="js/lib/requirejs/require.js"></script>
+
+
+</body>
 </html>
