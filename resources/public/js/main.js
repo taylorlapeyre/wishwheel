@@ -2,22 +2,27 @@ require.config({
 
 	paths:{
 		angular:"lib/angular/angular",
-        router:'lib/angular-ui-router/release/angular-ui-router.min'
+        router:'lib/angular-ui-router/release/angular-ui-router.min',
+		ngAnimate:'lib/angular-animate/animate'
 	},
 	shim:{
 		angular:{exports:'angular'},
-        router:['angular']
+        router:['angular'],
+		ngAnimate:{
+			deps:['angular'],
+			exports:'animate'
+		}
 	}
 	
 });
 
-require(['app','angular'],function(app,angular){
+require(['app','angular', 'ngAnimate'],function(app,angular, ngAnimate){
 	
 	
 	
 
 	angular.element(document).ready(function(){
-		angular.bootstrap(document,['app']);	
+		angular.bootstrap(document,['app','ngAnimate']);
 	});
 
 });

@@ -4,7 +4,9 @@ define([], function () {
     return [
         "$scope",
         "$state",
-        function ($scope,$state) {
+        "$animate",
+
+        function ($scope,$state, $animate) {
             $scope.title = "Wish-list";
             $scope.RsideBar = false;
 

@@ -13,10 +13,11 @@
         </div>
 
         <ul class="nav">
-            <div id="quickmenu" class="pull-right col-md-1" data-toggle="offcanvas" class="visible-xs text-center"><img
+            <div id="quickmenu" class="pull-right col-md-1"
+                 class="visible-xs text-center"><img
                     src="images/quickmenu-icon.png" alt="quickmenu"
-                    type="button" class="btn btn-default"
-                    ng-click="showSideBar()"/></div>
+                    type="button" class="btn btn-default" ng-click="showSideBar()" ng-model="RsideBar">
+             <!--   <input type="checkbox" ng-model="test" ng-init="test=false"/>  -->
 
         </ul>
     </div>
@@ -27,9 +28,11 @@
         <div ui-view="main"></div>
 
 
+
     </div>
-    <div class="sidebar pull-right col-md-3 col-xs-w" ng-show="RsideBar">
-        <ng-include src="'js/modules/partials/sidebar.html'"></ng-include>
+    <div ng-if="RsideBar" class="slide pull-right col-md-3 col-xs-2">
+         <ng-include src="'js/modules/partials/sidebar.html'"></ng-include>
+
     </div>
 </div>
 
@@ -38,7 +41,6 @@
     //window.bootstrappedData = <%= @data || 'null' %>;
 </script>
 <script data-main="js/main.js" src="js/lib/requirejs/require.js"></script>
-
 
 </body>
 </html>
