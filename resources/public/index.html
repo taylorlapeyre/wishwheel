@@ -7,31 +7,34 @@
 </head>
 <body ng-controller="HomeController">
 <div class="container-fluid">
+
+
+    <div class="row maxHeight col-md-12 col-xs-12"> <!-- i need to be able to push this column set off the canvas when sidebar is opened,
+                                                                or have the sidebar overlap the main container-->
+
     <div class="row">
         <div class="col-md-6 masthead">
             <img src="images/WishWheelLogo.png" alt="WishWheel - Logo"/>
         </div>
 
-        <ul class="nav">
+        <ul class="navbar-fixed-top">
             <div id="quickmenu" class="pull-right col-md-1"
                  class="visible-xs text-center"><img
                     src="images/quickmenu-icon.png" alt="quickmenu"
-                    type="button" class="btn btn-default" ng-click="showSideBar()" ng-model="RsideBar">
-             <!--   <input type="checkbox" ng-model="test" ng-init="test=false"/>  -->
+                    type="button" class="btn btn-default" ng-click="showSideBar()" ng-model="RsideBar"></div>
+            <!--   <input type="checkbox" ng-model="test" ng-init="test=false"/>  -->
 
         </ul>
     </div>
-
-    <div class="row col-md-9 col-xs-9">
-
-
-        <div ui-view="main"></div>
+    <!-- make sidebar nav look like large buttons. give the rows padding. have the
+            view of the current states button to be larger than the other buttons.-->
+        <div class="main-container" ui-view="main"></div>
 
 
+        <div ng-if="RsideBar" class="active slide pull-right col-md-3 col-xs-2">
+            <ng-include src="'js/modules/partials/sidebar.html'"></ng-include>
 
-    </div>
-    <div ng-if="RsideBar" class="slide pull-right col-md-3 col-xs-2">
-         <ng-include src="'js/modules/partials/sidebar.html'"></ng-include>
+        </div>
 
     </div>
 </div>

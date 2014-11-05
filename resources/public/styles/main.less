@@ -80,10 +80,7 @@ body{
   border: none;
 }
 
-div{
-  border-style: solid;
-  border-width: thin;
-}
+
 
 
 
@@ -103,7 +100,7 @@ div{
   left:100%;
 }        /* starting animations for enter */
 .slide.ng-enter.ng-enter-active {
-  left:0;
+  left:75%;
 }       /* terminal animations for enter */
 .slide.ng-leave {
   right:0;
@@ -111,3 +108,61 @@ div{
 .slide.ng-leave.ng-leave-active {
   right:-100%;
 }      /* terminal animations for leave */
+
+
+#xs-menu{
+
+}
+
+.maxHeight{
+  height:100%;
+
+}
+.navbar-fixed-top{
+  top:0;
+  position:fixed;
+  border-style: ridge;
+  border-bottom-color: @logo-color;
+
+}
+
+.sidebar{
+  height:100%;
+  //background-color: @logo-color;
+}
+.sidebar-footer{
+  bottom: 0;
+  border-top-style: solid;
+
+
+}
+.active{
+  z-index: 2;
+  position: fixed;
+  right: 0; /* or right */
+  top: 10%;
+  bottom: 0;
+  overflow: auto;
+
+}
+.container-fluid{
+  background-color: #e7e7e7;
+
+}
+
+.main-container{
+  padding: 10px;
+
+}
+.myaccount{
+  border-width: thick;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-color: @logo-color;
+}
+
+.control-group{
+
+
+}
+

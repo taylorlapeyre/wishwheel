@@ -1,3 +1,81 @@
-<div class="myaccount">
-    my account
-</div>
+<div class="myaccount col-md-offset-3 col-md-4  outline">
+
+
+
+    <form class="form-horizontal" method="post">
+        <fieldset class="center">
+
+            <!-- Form Name -->
+            <legend>Account Basics</legend>
+
+            <!-- File Button -->
+
+
+            <!-- Email input-->
+            <div class="control-group">
+                <label class="control-label" for="textinput">Email Address</label>
+                <input  name="email" type="text" placeholder="email" class="input-xlarge">
+
+
+            </div>
+
+            <!-- Password input-->
+            <div class="control-group">
+                <label class="control-label" for="passwordinput">Password</label>
+                <input id="passwordinput" name="passwordinput" type="password" placeholder="change password" class="input-xlarge">
+            </div>
+
+            <!-- Select Language -->
+            <div class="control-group">
+                <label class="control-label" for="selectlanguage">Language</label>
+                <div class="controls">
+                    <select id="selectlanguage" name="selectlanguage" class="input-xlarge">
+                        <option>English</option>
+                        <option>others unsupported</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="filebutton">Update Profile Picture</label>
+                <div class="controls">
+                    <input id="filebutton" name="filebutton" class="input-file" type="file">
+                </div>
+            </div>
+
+
+
+            <!-- Select Basic -->
+            <div class="control-group">
+                <label class="control-label" for="selectcountry">Country</label>
+                <div class="controls">
+                    <select id="selectcountry" name="selectcountry" class="input-xlarge">
+                        <option>United States</option>
+                        <option>other</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Multiple Radios -->
+            <div class="control-group">
+                <label class="control-label" for="radios">Gender</label>
+                <div class="controls">
+                    <label class="radio" for="radios-0">
+                        <input type="radio" name="radios" id="radios-0" value="Option one" checked="checked">
+                        Male
+                    </label>
+                    <label class="radio" for="radios-1">
+                        <input type="radio" name="radios" id="radios-1" value="Option two">
+                        Female
+                    </label>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+
+
+
+
+
