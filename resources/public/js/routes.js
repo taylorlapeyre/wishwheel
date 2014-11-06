@@ -20,6 +20,15 @@ define([], function () {
                     }
                 })
                 .state({
+                    name: 'signup',
+                    url: '/signup',
+                    views: {
+                        main: {
+                            templateUrl: baseUrl + 'home/signup.html'
+                        }
+                    }
+                })
+                .state({
                     name:"userdash",
                     url:'/dashboard',
                     views:{

@@ -1,4 +1,4 @@
-<div >
+<div ng-controller="HomeController">
 <br>
     <div class="login col-md-offset-4 col-md-4">
                 <form class=" col-xs-12 outline form-group" name="loginform" role="form">
@@ -21,7 +21,7 @@
                         <input ng-disabled="form.$invalid" ng-click="login()" id="loginbtn" type="submit" class="pull-right btn btn-primary" value="Login"/>
                     </div>
                     <div class="col-xs-4  form-group">
-                        <button href="/signup" class="pull-right btn btn-primary">Create Account</button>
+                        <button ui-sref="signup" class="pull-right btn btn-primary">Create Account</button>
                     </div>
                 </form>
             </div>
