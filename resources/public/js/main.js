@@ -3,7 +3,7 @@ require.config({
 	paths:{
 		angular:"lib/angular/angular",
         router:'lib/angular-ui-router/release/angular-ui-router.min',
-		ngAnimate:'lib/angular-animate/animate'
+		ngAnimate:'lib/angular-animate/angular-animate'
 	},
 	shim:{
 		angular:{exports:'angular'},
