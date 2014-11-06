@@ -2,7 +2,6 @@
   (:require [yesql.core :refer [defqueries]]
             [wishwheel.config :refer [db]]
             [wishwheel.models.wheel :as wheel]
-            [wishwheel.config :refer [db]]
             [crypto.password.bcrypt :as bcrypt]
             [schema.core :as s]))
 

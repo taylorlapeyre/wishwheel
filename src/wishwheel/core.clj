@@ -1,4 +1,5 @@
 (ns wishwheel.core
+  "Defines our routes and provides the main HTTP handler."
   (:gen-class)
   (:use compojure.core
         [ring.middleware.json])
