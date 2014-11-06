@@ -1,23 +1,26 @@
 <div >
 <br>
     <div class="login col-md-offset-4 col-md-4">
-                <form class="form-group" name="loginform" role="form">
+                <form class=" col-xs-12 outline form-group" name="loginform" role="form">
                     <div class="col-md-12 form-group">
                         <label for="email" class="col-md-3 control-label">Email</label>
                         <div class="col-md-9">
-                            <input ng-model="form.email" class="login-input form-control" id="email" name="email"type="text"/>
+                            <input ng-model="form.email" class="login-input form-control" id="email" name="email"type="text" required/>
                         </div>
                     </div>
                     <div class="col-md-12 form-group">
                         <label for="password" class="col-md-3 control-label">Password</label>
                         <div class="col-md-9">
-                            <input ng-model="form.password" class="login-input form-control"id="password" name="password" type="password"/>
+                            <input ng-model="form.password" class="login-input form-control"id="password" name="password" type="password" required/>
                         </div>
                     </div>
-                    <div class="col-md-8 form-group col-md-offset-4">
-                        <input ng-click="login()" id="loginbtn" type="submit" class="pull-right btn btn-primary" value="Login"/>
+                    <div class="status_message col-xs-4">
+                        {{message}}
                     </div>
-                    <div class="col-md-8 form-group col-md-offset-4">
+                    <div class="col-xs-4  form-group">
+                        <input ng-disabled="form.$invalid" ng-click="login()" id="loginbtn" type="submit" class="pull-right btn btn-primary" value="Login"/>
+                    </div>
+                    <div class="col-xs-4  form-group">
                         <button href="/signup" class="pull-right btn btn-primary">Create Account</button>
                     </div>
                 </form>

@@ -12,15 +12,21 @@
 *{
   box-sizing: border-box;
 }
-.outline{
-  border:1px solid black;
-}
 body{
   background-color:@basecolor;
 }
-.state{
-  margin-left:10px;
+
+
+/**utils*/
+.outline{
+  border:1px solid black;
 }
+.maxHeight{
+  height:100%;
+}
+
+
+
 .logocolor{
   background-color: @logo-color;
 }
@@ -52,16 +58,22 @@ body{
   height: 10px;
 }
 
+/**login*/
 .login{
 
 }
+
 .login-input{
   border-radius: 10px;
 }
+
 .control-label{
   text-align: right;
 }
 
+.status_message{
+  .outline;
+}
 
 .radial-btn{display:block;
   width:100px;
@@ -84,7 +96,9 @@ body{
 
 
 
-
+/**
+  slide menu
+*/
 
 .slide.ng-enter, .slide.ng-leave {
 
@@ -110,14 +124,6 @@ body{
 }      /* terminal animations for leave */
 
 
-#xs-menu{
-
-}
-
-.maxHeight{
-  height:100%;
-
-}
 .navbar-fixed-top{
   top:0;
   position:fixed;
