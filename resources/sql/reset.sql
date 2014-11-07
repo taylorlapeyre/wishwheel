@@ -20,6 +20,7 @@ CREATE TABLE items (
   id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(255) NOT NULL,
   price decimal(7,2),
+  image varchar(255),
   wheel_id int(11) NOT NULL,
   user_id int(11),
   PRIMARY KEY (id),

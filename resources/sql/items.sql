@@ -26,3 +26,10 @@ VALUES (:name, :price, :wheel_id);
 UPDATE items
 SET user_id = :user_id
 WHERE id = :id;
+
+-- name: assign-image!
+-- Updates the item that matches the given id by assigning its image to
+-- the image url given.
+UPDATE items
+SET image = :image
+WHERE id = :id;

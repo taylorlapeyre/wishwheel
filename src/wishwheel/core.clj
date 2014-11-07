@@ -2,7 +2,9 @@
   "Defines our routes and provides the main HTTP handler."
   (:gen-class)
   (:use compojure.core
-        [ring.middleware.json])
+        wishwheel.images
+        ring.middleware.json
+        ring.middleware.multipart-params)
   (:require [ring.adapter.jetty :as jetty-adapter]
             [ring.util.response :refer [resource-response]]
             [compojure.route   :as route]
@@ -94,6 +96,7 @@
 (def app
   "This is the handler for HTTP requests."
   (-> (handler/api main-routes)
+      (wrap-multipart-params {:store image-store})
       (wrap-json-body {:keywords? true})
       (wrap-json-response)))
 

@@ -32,6 +32,9 @@
   (user/when-authenticated token (fn [api-user]
     (if-let [item (first (item/find-by-id {:id id}))]
       (do
-        (item/assign-user! {:id id :user_id (:user_id item-data)})
+        (when (:user_id item_data)
+          (item/assign-user! {:id id :user_id (:user_id item-data)}))
+        (when (:image item_data)
+          (item/assign-image! {:id id :image (:image item-data)}))
         (response (first (item/find-by-id {:id id}))))
       (not-found "Item does not exist")))))
