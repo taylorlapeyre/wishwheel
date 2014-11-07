@@ -12,8 +12,7 @@
                  [ring/ring-jetty-adapter "1.3.1"]
                  [ring/ring-json "0.2.0"]
                  [crypto-password "0.1.3"]
-                 [compojure "1.2.1"]
-                 [prismatic/schema "0.3.1"]]
+                 [compojure "1.2.1"]]
   :plugins [[lein-ring "0.7.1"]
             [codox "0.8.10"]]
   :ring {:handler wishwheel.core/app}

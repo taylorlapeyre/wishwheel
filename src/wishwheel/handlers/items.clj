@@ -20,13 +20,12 @@
   [token wheel-id item-params]
   (user/when-authenticated token (fn [api-user]
     (let [item-params (merge {:wheel_id wheel-id} item-params)]
-      (try
-        (if (:image item-params)
-          (item/insert-with-image! item-params)
-          (item/insert! item-params))
+      (try (if (:image item-params)
+             (item/insert-with-image! item-params)
+             (item/insert! item-params))
         (status (response item-params) 201)
-        (catch java.lang.AssertionError e
-          (status (response (.getMessage e)) 422)))))))
+      (catch java.lang.AssertionError e
+        (status (response (.getMessage e)) 422)))))))
 
 (defn update
   "Assigns an item to another user. Will only look for user_id in item-data."

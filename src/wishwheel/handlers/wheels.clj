@@ -14,10 +14,8 @@
   "Creates a new wheel."
   [token wheel-params]
   (user/when-authenticated token (fn [api-user]
-    (try
-      (wheel/validate wheel-params)
-      (wheel/insert! wheel-params)
+    (try (wheel/insert! wheel-params)
       (let [created-wheel (first (wheel/find-by-id {:id (:id wheel-params)}))]
         (status (response created-wheel) 201))
-      (catch java.lang.AssertionError e
-        {:status 422 :body (.getMessage e)})))))
+    (catch java.lang.AssertionError e
+      (status (response (.getMessage e)) 422))))))

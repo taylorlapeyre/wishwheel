@@ -12,13 +12,11 @@
 (defn create
   "Creates a new user, encrypts their password, and generate their API token."
   [user-params]
-  (try
-    (user/validate user-params)
-    (user/secure-insert! user-params)
+  (try (user/secure-insert! user-params)
     (let [created-user (first (user/find-by-email {:email (:email user-params)}))]
       (status (response created-user) 201))
-    (catch java.lang.AssertionError e
-      (status (response (.getMessage e)) 422))))
+  (catch java.lang.AssertionError e
+    (status (response (.getMessage e)) 422))))
 
 (defn auth
   "Given an email and password, finds the user with matching credentials."

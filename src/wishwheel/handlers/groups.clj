@@ -21,12 +21,10 @@
   "Creates a new group."
   [token group-data]
   (user/when-authenticated token (fn [api-user]
-    (try
-      (group/validate group-data)
-      (group/insert! group-data)
+    (try (group/insert! group-data)
       (status (response group-data) 201)
-      (catch Exception e
-        (status (response (.getMessage e)) 422))))))
+    (catch Exception e
+      (status (response (.getMessage e)) 422))))))
 
 (defn add-user
   "Relates a given group id and a user id in the table users_groups."
