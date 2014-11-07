@@ -1,16 +1,16 @@
 define([],function(){
     return [
         '$scope',
+        '$state',
         'AuthService',
-        function($scope,AuthService){
+        function($scope,$state,AuthService){
             $scope.createAccount = function(){
                 AuthService.createAccount($scope.form)
                     .success(function(data, status, headrs, config){
-                        debugger;
+                        $state.go('userdash');
                     })
                     .error(function(data, status, headrs, config){
-
-                        debugger;
+                        $scope.message = "";
                     });
             };
         }

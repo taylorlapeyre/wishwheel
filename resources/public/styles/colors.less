@@ -1,0 +1,31 @@
+@basecolor:#ffffff;
+@logo-color:#5e0031;
+@red:#df3e3e;
+@green-light:#79d858;
+@green-dark:#569e3d;
+
+
+/*
+-l stands for light
+-d stands for dark
+*/
+@logo-color-l:lighten(@logo-color,5%);
+@logo-color-xl:lighten(@logo-color,10%);
+@logo-color-d:darken(@logo-color,5%);
+@logo-color-xd:darken(@logo-color,10%);
+
+/**
+  basic element colors
+*/
+
+.red{
+  background-color:@red;
+}
+.green{
+  background-color:@green-light;
+}
+.green-fade{
+  background-image: linear-gradient(@green-light,@green-dark);
+}
+.blue{}
+.yellow{}

@@ -1,0 +1,16 @@
+/*
+-l stands for light
+-d stands for dark
+*/
+/**
+  basic element colors
+*/
+.red {
+  background-color: #df3e3e;
+}
+.green {
+  background-color: #79d858;
+}
+.green-fade {
+  background-image: linear-gradient(#79d858, #569e3d);
+}

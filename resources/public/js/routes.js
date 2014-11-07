@@ -33,7 +33,10 @@ define([], function () {
                     url:'/dashboard',
                     views:{
                         main:{
-                            templateUrl:baseUrl+"userdashboard/userdash.html"
+                            templateUrl:baseUrl+"userdashboard/userdash.html",
+                            controller:[function(){
+                                console.log('Not checking if user is authenticated before allowing navigation to userdash');
+                            }]
                         }
                     }
                 })

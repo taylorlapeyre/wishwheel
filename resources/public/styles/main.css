@@ -2,11 +2,23 @@
 -l stands for light
 -d stands for dark
 */
+/**
+  basic element colors
+*/
+.red {
+  background-color: #df3e3e;
+}
+.green {
+  background-color: #79d858;
+}
+.green-fade {
+  background-image: linear-gradient(#79d858, #569e3d);
+}
 * {
   box-sizing: border-box;
 }
 body {
-  background-color: #ffffff;
+  background-color: white;
 }
 /**utils*/
 .outline {
@@ -14,6 +26,12 @@ body {
 }
 .maxHeight {
   height: 100%;
+}
+.rounded {
+  border-radius: 4px;
+}
+.rounded-small {
+  border-radius: 2px;
 }
 .logocolor {
   background-color: #5e0031;
@@ -117,9 +135,6 @@ body {
   bottom: 0;
   overflow: auto;
 }
-.container-fluid {
-  background-color: #e7e7e7;
-}
 .main-container {
   padding: 10px;
 }
@@ -129,3 +144,32 @@ body {
   -webkit-border-radius: 10px;
   border-color: #5e0031;
 }
+/**
+  the small little picture+name pairs
+*/
+.user_namepic_set {
+  margin-bottom: 10px;
+  background-color: white;
+  padding: 4px;
+  border-radius: 4px;
+}
+.user_pic {
+  display: inline;
+  height: 100%;
+  width: 8%;
+}
+.user_name {
+  display: inline;
+  width: 90% !important;
+}
+.plusbtn {
+  color: white;
+  text-shadow: 0.5px 0.5px 2px grey;
+  overflow: hidden;
+}
+.create_group_btn_wrapper {
+  margin-right: 15px;
+}
+/**
+  groups
+*/

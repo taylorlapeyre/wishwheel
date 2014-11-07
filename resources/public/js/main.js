@@ -3,7 +3,13 @@ require.config({
 	paths:{
 		angular:"lib/angular/angular",
         router:'lib/angular-ui-router/release/angular-ui-router.min',
-		ngAnimate:'lib/angular-animate/angular-animate'
+		ngAnimate:'lib/angular-animate/angular-animate',
+        userdash:'modules/userdashboard',
+        auth:'modules/auth',
+        groupdash:'modules/groupdashboard',
+        home:'modules/home',
+        wheel:'modules/wheel',
+        wishwheel:'modules/wishwheel'
 	},
 	shim:{
 		angular:{exports:'angular'},

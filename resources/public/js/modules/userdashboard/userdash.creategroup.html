@@ -1,1 +1,60 @@
-create group
+<div class="outline">
+
+    <div class="outline">
+        <div class="outline col-xs-12 col-md-6">
+            <h1 class="outline">
+                Create Group
+            </h1>
+
+            <form ng-controller="CreateGroupController" class="outline">
+                <div class="col-md-12">
+                    <label for="group_name" class="col-md-3 control-label">Group name</label>
+
+                    <div class="col-md-9">
+                        <input ng-model="form.group_name" class="form-control" id="group_name" name="group_name"
+                               type="group_name" required/>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <label class="col-md-3 control-label">Add members</label>
+
+                    <div class="col-md-9">
+                        <div class="user_namepic_set input-group" ng-repeat="member in groupmembers">
+                            <img class="user_pic pull-left" src="images/foreveralone.png" alt="{{member.name}}"/>
+                            <input  class="pull-right user_name col-md-4 form-control" value="{{member.name}}"
+                               type="text"/>
+                            <span class="input-group-btn">
+                                <button ng-click="removeMember($index)" class="plusbtn red btn btn-default">X</button>
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <input ng-model="form.name" class="form-control" type="text"/>
+                            <span class="input-group-btn">
+                                <button ng-click="addMember()" class="plusbtn green btn btn-default">+</button>
+
+                            </span>
+                        </div>
+
+
+                    </div>
+                    <div class="create_group_btn_wrapper pull-right">
+                        <br/>
+                        <button class="btn btn-primary">Create Group</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="outline col-xs-12 col-md-6">
+            <h2 class="outline">
+                How-to
+            </h2>
+        </div>
+    </div>
+
+
+</div>

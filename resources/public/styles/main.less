@@ -1,19 +1,10 @@
-@basecolor:#ffffff;
-@logo-color:#5e0031;
-/*
--l stands for light
--d stands for dark
-*/
-@logo-color-l:lighten(@logo-color,5%);
-@logo-color-xl:lighten(@logo-color,10%);
-@logo-color-d:darken(@logo-color,5%);
-@logo-color-xd:darken(@logo-color,10%);
+@import "colors";
 
 *{
   box-sizing: border-box;
 }
 body{
-  background-color:@basecolor;
+  background-color:white;
 }
 
 
@@ -25,6 +16,12 @@ body{
   height:100%;
 }
 
+.rounded{
+  border-radius:4px;
+}
+.rounded-small{
+  border-radius:2px;
+}
 
 
 .logocolor{
@@ -151,10 +148,6 @@ body{
   overflow: auto;
 
 }
-.container-fluid{
-  background-color: #e7e7e7;
-
-}
 
 .main-container{
   padding: 10px;
@@ -169,6 +162,39 @@ body{
 
 .control-group{
 
-
 }
+
+/**
+  the small little picture+name pairs
+*/
+.user_namepic_set{
+  margin-bottom:10px;
+  background-color:white;
+  padding: 4px;
+  .rounded;
+}
+.user_pic{
+  display:inline;
+  height: 100%;
+  width: 8%;
+}
+
+.user_name{
+  display:inline;
+  width: 90% !important;
+}
+
+.plusbtn{
+  color: white;
+  text-shadow:0.5px 0.5px 2px grey;
+  overflow:hidden;
+}
+
+.create_group_btn_wrapper{
+  margin-right:15px;
+}
+
+/**
+  groups
+*/
 
