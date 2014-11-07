@@ -10,7 +10,10 @@ body {
 }
 /**utils*/
 .outline {
-  border: 1px solid black;
+  border: 1px solid;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-color: #5e0031;
 }
 .maxHeight {
   height: 100%;
@@ -49,7 +52,10 @@ body {
   text-align: right;
 }
 .status_message {
-  border: 1px solid black;
+  border: 1px solid;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-color: #5e0031;
 }
 .radial-btn {
   display: block;
@@ -118,14 +124,8 @@ body {
   overflow: auto;
 }
 .container-fluid {
-  background-color: #e7e7e7;
+  background-color: transparent;
 }
 .main-container {
-  padding: 10px;
-}
-.myaccount {
-  border-width: thick;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-color: #5e0031;
+  padding: 20px;
 }

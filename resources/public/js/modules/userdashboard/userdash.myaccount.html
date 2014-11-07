@@ -1,78 +1,112 @@
-<div class="myaccount col-md-offset-3 col-md-4  outline">
+
+    <form class="myaccount outline col-md-6 col-md-offset-3" role="form" method="post">
 
 
 
-    <form class="form-horizontal" method="post">
-        <fieldset class="center">
+        <div class="col-xs-12 col-md-12 form-group">
+            <label for="email" class="col-xs-3 control-label">User</label>
 
-            <!-- Form Name -->
-            <legend>Account Basics</legend>
-
-            <!-- File Button -->
-
-
-            <!-- Email input-->
-            <div class="control-group">
-                <label class="control-label" for="textinput">Email Address</label>
-                <input  name="email" type="text" placeholder="email" class="input-xlarge">
+            <div class="col-xs-4">
+                <div class="username">
 
 
             </div>
 
-            <!-- Password input-->
-            <div class="control-group">
-                <label class="control-label" for="passwordinput">Password</label>
-                <input id="passwordinput" name="passwordinput" type="password" placeholder="change password" class="input-xlarge">
-            </div>
+                <img src="images/profile_pic.png" class="resize img-thumbnail" ></div>
+            <div class=" col-xs-3 form-group">
 
-            <!-- Select Language -->
-            <div class="control-group">
-                <label class="control-label" for="selectlanguage">Language</label>
-                <div class="controls">
-                    <select id="selectlanguage" name="selectlanguage" class="input-xlarge">
-                        <option>English</option>
-                        <option>others unsupported</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="filebutton">Update Profile Picture</label>
+                <label class="control-label" for="filebutton"></label>
+                <p class="help-block">Add photo</p>
                 <div class="controls">
                     <input id="filebutton" name="filebutton" class="input-file" type="file">
                 </div>
             </div>
+        </div>
 
 
 
-            <!-- Select Basic -->
-            <div class="control-group">
-                <label class="control-label" for="selectcountry">Country</label>
-                <div class="controls">
-                    <select id="selectcountry" name="selectcountry" class="input-xlarge">
-                        <option>United States</option>
-                        <option>other</option>
-                    </select>
-                </div>
+
+        <div class="col-xs-12 col-md-12 form-group">
+            <label for="password" class="col-xs-3 control-label">Password</label>
+
+
+            <div class="col-xs-9">
+                <input ng-model="form.password" class="login-input form-control" id="password" name="password"
+                       type="password" placeholder="change password"/>
             </div>
+        </div>
 
-            <!-- Multiple Radios -->
-            <div class="control-group">
-                <label class="control-label" for="radios">Gender</label>
-                <div class="controls">
-                    <label class="radio" for="radios-0">
-                        <input type="radio" name="radios" id="radios-0" value="Option one" checked="checked">
-                        Male
-                    </label>
-                    <label class="radio" for="radios-1">
-                        <input type="radio" name="radios" id="radios-1" value="Option two">
-                        Female
-                    </label>
-                </div>
+
+
+        <div class="col-xs-12 col-md-12 form-group">
+            <label for="selectlanguage" class="col-xs-3 col-md-3 control-label">Language</label>
+            <div class="col-md-6">
+                <select id="selectlanguage" name="selectlanguage" class="form-control">
+                    <option>English</option>
+                    <option>others unsupported</option>
+                </select>
             </div>
+        </div>
 
-        </fieldset>
-    </form>
+
+
+
+
+        <div class="col-xs-12 col-md-12 form-group">
+            <label for="selectcountry"class="col-xs-3 control-label">Country</label>
+
+            <div class="col-md-6">
+                <select id="selectcountry" name="selectcountry" class="form-control">
+                    <option>United States</option>
+                    <option>other</option>
+                </select>
+            </div>
+        </div>
+
+
+
+
+        <div class="col-xs-12 col-md-12 form-group">
+            <label for="updatebtn" class="sr-only col-xs-3 control-label">Create Account</label>
+
+            <div class="col-md-6">
+
+                <input ng-click="updateAccount()" id="updatebtn" type="submit" class="btn btn-info" value="Update Account"/>
+            </div>
+        </div>
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
