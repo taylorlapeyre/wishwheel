@@ -15,6 +15,8 @@
     (str directory (get-random-id 10) "." file-extension)))
 
 (defn image-store
+  "Accepts a map with :filename and :stream keys, uploads the file, and
+  returns the location of the file."
   [{:keys [filename stream]}]
   (let [filename (random-file-name filename)
         file (io/file filename)]
