@@ -10,20 +10,19 @@
   (let [alphanumeric "abcdefghijklmnopqrstuvwxyz1234567890"]
     (apply str (repeatedly length #(rand-nth alphanumeric)))))
 
-(defn random-file-name
+(defn probably-unique-file-name
   "Given an existing filename, returns a randomly generated file name
-  using the same file extension. Files are located in:
-  resources/public/images/"
-  [filename]
-  (let [file-extension (last (string/split filename #"\."))
-        directory "resources/public/images/"]
+  using the same file extension located in the given directory."
+  [filename directory]
+  (let [file-extension (last (string/split filename #"\."))]
     (str directory (get-random-id 10) "." file-extension)))
 
 (defn image-store
   "Accepts a map with :filename and :stream keys, uploads the file, and
-  returns the location of the file."
+  returns the location of the file relative to the public folder."
   [{:keys [filename stream]}]
-  (let [filename (random-file-name filename)
+  (let [directory "resources/public/images/system/"
+        filename (probably-unique-file-name filename directory)
         file (io/file filename)]
     (io/copy stream file)
-    filename))
+    (string/replace filename "resources/public/" "")))

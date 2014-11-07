@@ -52,11 +52,16 @@
 
     (PATCH "/items/:id"
       {params :params body :body}
-      (item-handlers/update (:token body) (:id params) (:item body)))
+      (if-let [i (or (:image params) (:image body))]
+        (item-handlers/update (:token body) (:id params) (assoc (:item body) :image i))
+        (item-handlers/update (:token body) (:id params) (:item body))))
 
-    (POST "/wheel/:id/items"
-      {params :params body :body}
-      (item-handlers/create (:token body) (:id params) (:item body)))
+    (POST "/wheels/:id/items"
+      {params :params}
+      (if-let [i (:image params)]
+        (item-handlers/create (:token params) (:id params) (assoc (:item params) :image i))
+        (item-handlers/create (:token params) (:id params) (:item params))))
+
 
     (GET "/wheels/:id/items"
       [id]

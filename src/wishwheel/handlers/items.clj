@@ -19,12 +19,14 @@
   "Creates a new item in a given wheel."
   [token wheel-id item-params]
   (user/when-authenticated token (fn [api-user]
-    (try
-      (item/validate item-params)
-      (item/insert! (merge {:wheel_id wheel-id} item-params))
-      (status (response item-params) 201)
-      (catch java.lang.AssertionError e
-        (status (response (.getMessage e) 422)))))))
+    (let [item-params (merge {:wheel_id wheel-id} item-params)]
+      (try
+        (if (:image item-params)
+          (item/insert-with-image! item-params)
+          (item/insert! item-params))
+        (status (response item-params) 201)
+        (catch java.lang.AssertionError e
+          (status (response (.getMessage e)) 422)))))))
 
 (defn update
   "Assigns an item to another user. Will only look for user_id in item-data."
@@ -32,9 +34,9 @@
   (user/when-authenticated token (fn [api-user]
     (if-let [item (first (item/find-by-id {:id id}))]
       (do
-        (when (:user_id item_data)
+        (when (:user_id item-data)
           (item/assign-user! {:id id :user_id (:user_id item-data)}))
-        (when (:image item_data)
+        (when (:image item-data)
           (item/assign-image! {:id id :image (:image item-data)}))
         (response (first (item/find-by-id {:id id}))))
       (not-found "Item does not exist")))))
