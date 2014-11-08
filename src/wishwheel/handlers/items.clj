@@ -11,7 +11,7 @@
 (defn show
   "Returns a json representation of the item with a given id."
   [id]
-  (if-let [item (first (item/find-by-id {:id id}))]
+  (if-let [item (item/find-by-id id)]
     (response item)
     (not-found "Item does not exist")))
 
@@ -20,10 +20,8 @@
   [token wheel-id item-params]
   (user/when-authenticated token (fn [api-user]
     (let [item-params (merge {:wheel_id wheel-id} item-params)]
-      (try (if (:image item-params)
-             (item/insert-with-image! item-params)
-             (item/insert! item-params))
-        (status (response item-params) 201)
+      (try (item/create item-params)
+           (status (response item-params) 201)
       (catch java.lang.AssertionError e
         (status (response (.getMessage e)) 422)))))))
 
@@ -31,11 +29,7 @@
   "Assigns an item to another user. Will only look for user_id in item-data."
   [token id item-data]
   (user/when-authenticated token (fn [api-user]
-    (if-let [item (first (item/find-by-id {:id id}))]
-      (do
-        (when (:user_id item-data)
-          (item/assign-user! {:id id :user_id (:user_id item-data)}))
-        (when (:image item-data)
-          (item/assign-image! {:id id :image (:image item-data)}))
-        (response (first (item/find-by-id {:id id}))))
-      (not-found "Item does not exist")))))
+    (if-let [item (item/find-by-id id)]
+      (do (item/update id item-data)
+          (response (item/find-by-id id))
+      (not-found "Item does not exist"))))))

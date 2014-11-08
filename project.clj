@@ -5,7 +5,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [yesql "0.5.0-beta2"]
+                 [oj "0.1.7"]
                  [mysql/mysql-connector-java "5.1.32"]
                  [environ "0.5.0"]
                  [ring/ring-core "1.2.0"]

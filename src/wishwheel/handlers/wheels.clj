@@ -6,7 +6,7 @@
 (defn show
   [id]
   "Returns a json representation of the wheel with a given id."
-  (if-let [wheel (first (wheel/find-by-id {:id id}))]
+  (if-let [wheel (wheel/find-by-id id)]
     (response wheel)
     (not-found "Wheel does not exist")))
 
@@ -14,8 +14,8 @@
   "Creates a new wheel."
   [token wheel-params]
   (user/when-authenticated token (fn [api-user]
-    (try (wheel/insert! wheel-params)
-      (let [created-wheel (first (wheel/find-by-id {:id (:id wheel-params)}))]
-        (status (response created-wheel) 201))
+    (try (wheel/create wheel-params)
+         (let [created-wheel (wheel/find-by-id (:id wheel-params))]
+           (status (response created-wheel) 201))
     (catch java.lang.AssertionError e
       (status (response (.getMessage e)) 422))))))
