@@ -14,8 +14,8 @@
       (first)))
 
 (defn create
-  "Given an id, finds the corresponding item in the database
-  and returns it."
+  "Create a new group with the given data. Does not validate, will throw
+  DB error on integrity constraint violation."
   [group-data]
   (-> (query :groups)
       (insert group-data)
