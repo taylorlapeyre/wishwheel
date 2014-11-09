@@ -1,9 +1,10 @@
 (ns wishwheel.models.user
+  "Functions for interfacing with the `users` table in the database."
   (:require [oj.core :as oj]
-            [oj.modifiers :as mods]
+            [oj.modifiers :refer [query select where insert update]]
             [wishwheel.config :refer [db]]
             [wishwheel.models.wheel :as wheel]
-            [crypto.password.bcrypt :as bcrypt]))
+            [crypto.password.:refer [encrypt check]]))
 
 (def safe-cols
   "Columns that don't contain sensitive information, such as passwords
@@ -11,64 +12,74 @@
   [:id :email :first_name :last_name])
 
 (defn find-by-email
+  "Given an email address, finds the corresponding user in the database
+  and returns it."
   ([email]
     (find-by-email email {:with-token? false}))
   ([email {:keys [with-token?]}]
     (let [cols (if-not with-token? safe-cols (conj safe-cols :token))]
-      (-> (mods/query :users)
-          (mods/select cols)
-          (mods/where {:email email})
+      (-> (query :users)
+          (select cols)
+          (where {:email email})
           (oj/exec db)
           (first)))))
 
 (defn find-by-token
+  "Given an token, finds the corresponding user in the database
+  and returns it."
   [token]
-  (-> (mods/query :users)
-      (mods/select safe-cols)
-      (mods/where {:token token})
+  (-> (query :users)
+      (select safe-cols)
+      (where {:token token})
       (oj/exec db)
       (first)))
 
 (defn find-by-id
+  "Given an id, finds the corresponding user in the database
+  and returns it."
   [id]
-  (-> (mods/query :users)
-      (mods/select safe-cols)
-      (mods/where {:id id})
+  (-> (query :users)
+      (select safe-cols)
+      (where {:id id})
       (oj/exec db)
       (first)))
 
 (defn find-by-group
+  "Given a group id, finds all users that are members of the corresponding
+  group."
   [group_id]
-  (let [memberships (-> (mods/query :users_groups)
-                        (mods/where {:group_id group_id})
+  (let [memberships (-> (query :users_groups)
+                        (where {:group_id group_id})
                         (oj/exec db))]
      (find-by-id (map :user_id memberships))))
 
 (defn create
+  "Create a new user with the given data. Does not validate, will throw
+  DB error on integrity constraint violation. Will encrypt their password."
   [user-data]
-  (let [user-data (assoc user-data :password (bcrypt/encrypt (:password user-data)))]
-    (-> (mods/query :users)
-        (mods/insert user-data)
+  (let [user-data (assoc user-data :password (encrypt (:password user-data)))]
+    (-> (query :users)
+        (insert user-data)
         (oj/exec db))))
 
 (defn authenticate
   "Given an email and password, finds the user with matching credentials."
   [email pswd]
-  (when-let [user (-> (mods/query :users)
-                      (mods/select (conj safe-cols :password :token))
-                      (mods/where {:email email})
+  (when-let [user (-> (query :users)
+                      (select (conj safe-cols :password :token))
+                      (where {:email email})
                       (oj/exec db)
                       (first))]
-    (when (bcrypt/check pswd (:password user))
+    (when (check pswd (:password user))
       (dissoc user :password))))
 
 (defn valid-token?
   "Given a user id and api token, finds the user with the id and determines
   if the given token matches."
   [id token]
-  (when-let [user (-> (mods/query :users)
-                      (mods/select [:token])
-                      (mods/where {:id id})
+  (when-let [user (-> (query :users)
+                      (select [:token])
+                      (where {:id id})
                       (oj/exec db)
                       (first))]
     (= token (:token user))))
