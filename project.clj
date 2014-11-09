@@ -1,4 +1,4 @@
-(defproject wishwheel "0.1.0"
+(defproject wishwheel "0.2.0"
   :min-lein-version "2.0.0"
   :description "A simple news website written in Clojure."
   :url "http://example.com/FIXME"
