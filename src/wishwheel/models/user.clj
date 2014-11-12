@@ -4,7 +4,7 @@
             [oj.modifiers :refer [query select where insert update]]
             [wishwheel.config :refer [db]]
             [wishwheel.models.wheel :as wheel]
-            [crypto.password.:refer [encrypt check]]))
+            [crypto.password.bcrypt :as bcrypt]))
 
 (def safe-cols
   "Columns that don't contain sensitive information, such as passwords
@@ -57,7 +57,7 @@
   "Create a new user with the given data. Does not validate, will throw
   DB error on integrity constraint violation. Will encrypt their password."
   [user-data]
-  (let [user-data (assoc user-data :password (encrypt (:password user-data)))]
+  (let [user-data (assoc user-data :password (bcrypt/encrypt (:password user-data)))]
     (-> (query :users)
         (insert user-data)
         (oj/exec db))))
@@ -70,7 +70,7 @@
                       (where {:email email})
                       (oj/exec db)
                       (first))]
-    (when (check pswd (:password user))
+    (when (bcrypt/check pswd (:password user))
       (dissoc user :password))))
 
 (defn valid-token?

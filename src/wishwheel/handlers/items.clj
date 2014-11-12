@@ -1,12 +1,15 @@
 (ns wishwheel.handlers.items
   (:require [ring.util.response :refer [response status not-found]]
-            [wishwheel.models.item :as item]
-            [wishwheel.models.user :as user]))
+            [wishwheel.models.item  :as item]
+            [wishwheel.models.user  :as user]
+            [wishwheel.models.wheel :as wheel]))
 
 (defn index
   "Given a valid wheel id, returns all items that belong to that wheel."
   [wheel-id]
-  (response (item/find-by-wheel {:wheel_id wheel-id})))
+  (if (wheel/find-by-id wheel-id)
+    (response (item/find-by-wheel wheel-id))
+    (not-found "Wheel does not exist.")))
 
 (defn show
   "Returns a json representation of the item with a given id."

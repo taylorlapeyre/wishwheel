@@ -16,4 +16,5 @@
   :plugins [[lein-ring "0.7.1"]
             [codox "0.8.10"]]
   :ring {:handler wishwheel.core/app}
-  :main wishwheel.core)
+  :main wishwheel.core
+  :aot :all)
