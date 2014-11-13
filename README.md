@@ -1,18 +1,16 @@
-# Wish Wheel
+![ww](http://i.imgur.com/2uwGqw7.png)
 
-Wish Wheel is a website designed to help you find gifts for other people, and to make it easy for others to find the perfect gift for you.
+# WishWheel
 
-## Code Organization
+A website designed to help you find gifts for other people, and to make it easy for others to find the perfect gift for you.
+
+## Where to Find Stuff
 
 Front end code is located in `resources/public`.
 
-SQL queries are located in `resources/sql`.
-
 Back end code is located in `src`.
 
-Documentation is located in `doc`.
-
-Tests are located in `test`.
+SQL queries are located in `resources/sql`.
 
 
 ## Getting Up & Running
@@ -33,7 +31,10 @@ called `wishwheel3`.
   $ lein
   ```
 2. Clone this repository
-3. Reset your database tables: `$ mysql -uroot wishwheel3 < resources/sql/reset.sql`
+3. Reset your database tables:
+  ``` bash
+  $ mysql -uroot wishwheel3 < resources/sql/reset.sql
+  ```
 4. `lein run`
 
 The website will be available on localhost:3000
