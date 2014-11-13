@@ -6,10 +6,10 @@
         ring.middleware.json
         ring.middleware.multipart-params
         ring.middleware.resource
-        ring.middleware.file-info)
-  (:require [ring.adapter.jetty :as jetty-adapter]
+        ring.middleware.file-info
+        org.httpkit.server)
+  (:require [environ.core :refer [env]]
             [ring.util.response :refer [resource-response]]
-            [environ.core :refer [env]]
             [wishwheel.handlers.users  :as user-handlers]
             [wishwheel.handlers.wheels :as wheel-handlers]
             [wishwheel.handlers.items  :as item-handlers]
@@ -18,6 +18,12 @@
 (defn serve-website
   [request]
   (resource-response "index.html" {:root "public"}))
+
+(defn wrap-with-logger [handler]
+  (fn [request]
+    (println (:request-method request) (:uri request))
+    (let [response (handler request)]
+      response)))
 
 (def main-routes
   (-> (GET   "/"                           serve-website)
@@ -42,12 +48,13 @@
       (wrap-file-info)
       (wrap-multipart-params {:store image-store})
       (wrap-json-body {:keywords? true})
-      (wrap-json-response)))
+      (wrap-json-response)
+      (wrap-with-logger)))
 
 (defn -main
   "This is the entry point into the application. It runs the server."
   [& [port]]
   (let [chosen-port (or port (env :port) "3000")
         parse-int #(Integer/parseInt (re-find #"\A-?\d+" %))]
-    (jetty-adapter/run-jetty app {:port (parse-int chosen-port)
-                                  :join? false})))
+    (println "Starting server on port" chosen-port)
+    (run-server app {:port (parse-int chosen-port)})))
