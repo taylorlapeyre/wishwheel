@@ -2,11 +2,18 @@
  * Home module
  *
  *
+ *
+ *
  * The module which packages together the homepage.
  * DATE            BY        CHANGE REF  DESCRIPTION
  * ========    ==========    =========== =============
  * 11/7/14     Alex Clavelle 9057e41     initial
  *
+ *
+ *
+ *
+ *  @module Home
+ *  @main Home
  */
 define(['angular','router','modules/home/HomeController','modules/home/SignupController','routes','userdash/userdash'],function(angular,router,homeCtrl,signupCtrl,routes){
 

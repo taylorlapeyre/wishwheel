@@ -1,12 +1,17 @@
 /**
- * CreateGroupController
+ * User dash module
  *
  * The controller for the dialog to create a group.
+ *
+ *
+ *
+ *
+ *
  * DATE            BY        CHANGE REF  DESCRIPTION
  * ========    ==========    =========== =============
  * 11/7/14     Alex Clavelle 9057e41     initial
  *
- *
+ * @module userdashboard
  */
 
 define(['angular','userdash/CreateGroupController'], function (angular,CreateGroupController) {

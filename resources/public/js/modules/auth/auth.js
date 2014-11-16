@@ -7,6 +7,8 @@
  * ========    ==========    =========== =============
  * 11/7/14     Alex Clavelle 9057e41     initial
  *
+ *
+ * @module Auth
  */
 define(['angular','modules/auth/AuthService'],
 	function(angular,AuthService){

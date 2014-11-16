@@ -1,0 +1,331 @@
+{
+    "project": {},
+    "files": {
+        "resources/public/js/modules/auth/AuthService.js": {
+            "name": "resources/public/js/modules/auth/AuthService.js",
+            "modules": {
+                "Auth": 1
+            },
+            "classes": {
+                "AuthService": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "resources/public/js/modules/auth/auth.js": {
+            "name": "resources/public/js/modules/auth/auth.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "resources/public/js/modules/home/HomeController.js": {
+            "name": "resources/public/js/modules/home/HomeController.js",
+            "modules": {},
+            "classes": {
+                "HomeController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "resources/public/js/modules/home/SignupController.js": {
+            "name": "resources/public/js/modules/home/SignupController.js",
+            "modules": {},
+            "classes": {
+                "SignupController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "resources/public/js/modules/home/home.js": {
+            "name": "resources/public/js/modules/home/home.js",
+            "modules": {
+                "Home": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "resources/public/js/modules/userdashboard/CreateGroupController.js": {
+            "name": "resources/public/js/modules/userdashboard/CreateGroupController.js",
+            "modules": {
+                "userdashboard": 1
+            },
+            "classes": {
+                "CreateGroupController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "resources/public/js/modules/userdashboard/userdash.js": {
+            "name": "resources/public/js/modules/userdashboard/userdash.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "resources/public/js/app.js": {
+            "name": "resources/public/js/app.js",
+            "modules": {
+                "app": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "resources/public/js/main.js": {
+            "name": "resources/public/js/main.js",
+            "modules": {
+                "Main": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "resources/public/js/routes.js": {
+            "name": "resources/public/js/routes.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "Auth": {
+            "name": "Auth",
+            "submodules": {},
+            "classes": {
+                "AuthService": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "resources/public/js/modules/auth/AuthService.js",
+            "line": 21,
+            "description": "CreateGroupController\n\nThe service which makes REST calls to the server to receive the user's security token.\n\n\nDATE            BY        CHANGE REF  DESCRIPTION\n========    ==========    =========== =============\n11/7/14     Alex Clavelle 9057e41     initial"
+        },
+        "Home": {
+            "name": "Home",
+            "submodules": {},
+            "classes": {
+                "HomeController": 1,
+                "SignupController": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "resources/public/js/modules/home/SignupController.js",
+            "line": 19,
+            "description": "Home module\n\n\n\n\nThe module which packages together the homepage.\nDATE            BY        CHANGE REF  DESCRIPTION\n========    ==========    =========== =============\n11/7/14     Alex Clavelle 9057e41     initial",
+            "itemtype": "main"
+        },
+        "userdashboard": {
+            "name": "userdashboard",
+            "submodules": {},
+            "classes": {
+                "CreateGroupController": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "resources/public/js/modules/userdashboard/CreateGroupController.js",
+            "line": 16,
+            "description": "CreateGroupController\n\nThe controller for the dialog to create a group.\nDATE            BY        CHANGE REF  DESCRIPTION\n========    ==========    =========== =============\n11/7/14     Alex Clavelle 9057e41     initial"
+        },
+        "app": {
+            "name": "app",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "resources/public/js/app.js",
+            "line": 1,
+            "description": "App\n\nThe module which sets up filepaths for loading via define calls and bootstraps the application.\n\n\n\nDATE            BY        CHANGE REF  DESCRIPTION\n========    ==========    =========== =============\n11/7/14     Alex Clavelle 9057e41     initial"
+        },
+        "Main": {
+            "name": "Main",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "resources/public/js/main.js",
+            "line": 1,
+            "description": "Main\n\nThe module which sets up filepaths for loading via define calls and bootstraps the application.\nDATE            BY        CHANGE REF  DESCRIPTION\n========    ==========    =========== =============\n11/7/14     Alex Clavelle 9057e41     initial"
+        }
+    },
+    "classes": {
+        "AuthService": {
+            "name": "AuthService",
+            "shortname": "AuthService",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Auth",
+            "namespace": "",
+            "file": "resources/public/js/modules/auth/AuthService.js",
+            "line": 21
+        },
+        "HomeController": {
+            "name": "HomeController",
+            "shortname": "HomeController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Home",
+            "namespace": "",
+            "file": "resources/public/js/modules/home/HomeController.js",
+            "line": 27
+        },
+        "SignupController": {
+            "name": "SignupController",
+            "shortname": "SignupController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Home",
+            "namespace": "",
+            "file": "resources/public/js/modules/home/SignupController.js",
+            "line": 19
+        },
+        "CreateGroupController": {
+            "name": "CreateGroupController",
+            "shortname": "CreateGroupController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "userdashboard",
+            "namespace": "",
+            "file": "resources/public/js/modules/userdashboard/CreateGroupController.js",
+            "line": 16,
+            "params": [
+                {
+                    "name": "$scope",
+                    "description": ""
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "resources/public/js/modules/auth/AuthService.js",
+            "line": 30,
+            "description": "Logs the user in",
+            "params": [
+                {
+                    "name": "form",
+                    "description": "the user's login form (email & password)",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "resolves when the user receives a valid token,\nrejects when the credentials are bad.",
+                "type": "HttpPromise"
+            },
+            "itemtype": "method",
+            "name": "login",
+            "class": "AuthService",
+            "module": "Auth"
+        },
+        {
+            "file": "resources/public/js/modules/auth/AuthService.js",
+            "line": 42,
+            "description": "Attempts to create an account.",
+            "params": [
+                {
+                    "name": "form",
+                    "description": "holds the user's information like email and password."
+                }
+            ],
+            "return": {
+                "description": "resolves if the user was created, rejects if the user was not created.",
+                "type": "HttpPromise"
+            },
+            "itemtype": "method",
+            "name": "createAccount",
+            "class": "AuthService",
+            "module": "Auth"
+        },
+        {
+            "file": "resources/public/js/modules/home/HomeController.js",
+            "line": 41,
+            "description": "toggles the side-menu",
+            "itemtype": "method",
+            "name": "showSideBar",
+            "class": "HomeController",
+            "module": "Home"
+        },
+        {
+            "file": "resources/public/js/modules/home/HomeController.js",
+            "line": 51,
+            "description": "Reads the form it's attached to and uses AuthService.login to log the user in.\n If login was successful and a token is received,\n  navigate to the user's dash\n else\n  show an error",
+            "itemtype": "method",
+            "name": "login",
+            "class": "HomeController",
+            "module": "Home"
+        },
+        {
+            "file": "resources/public/js/modules/home/SignupController.js",
+            "line": 27,
+            "description": "Posts to the REST api to create a new account.",
+            "itemtype": "method",
+            "name": "createAccount",
+            "class": "SignupController",
+            "module": "Home"
+        },
+        {
+            "file": "resources/public/js/modules/userdashboard/CreateGroupController.js",
+            "line": 23,
+            "description": "Adds a member to the list of members in the new group.",
+            "params": [
+                {
+                    "name": "none,",
+                    "description": "reads the form from the document.",
+                    "type": "Object"
+                }
+            ],
+            "itemtype": "method",
+            "name": "addMember",
+            "class": "CreateGroupController",
+            "module": "userdashboard"
+        },
+        {
+            "file": "resources/public/js/modules/userdashboard/CreateGroupController.js",
+            "line": 35,
+            "description": "removes the member from the members array",
+            "params": [
+                {
+                    "name": "$index",
+                    "description": "the index of the user to remove from the new group.",
+                    "type": "Int"
+                }
+            ],
+            "itemtype": "method",
+            "name": "removeMember",
+            "class": "CreateGroupController",
+            "module": "userdashboard"
+        },
+        {
+            "file": "resources/public/js/routes.js",
+            "line": 1,
+            "description": "Routes definition\n\nAll the possible states the application can be in, as well as their views,urls,and controllers.\n\n\nDATE            BY        CHANGE REF  DESCRIPTION\n========    ==========    =========== =============\n11/7/14     Alex Clavelle 9057e41     initial",
+            "class": "",
+            "module": "Main"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\nRoutes definition\n\nAll the possible states the application can be in, as well as their views,urls,and controllers.\n\n\nDATE            BY        CHANGE REF  DESCRIPTION\n========    ==========    =========== =============\n11/7/14     Alex Clavelle 9057e41     initial",
+            "line": " resources/public/js/routes.js:1"
+        }
+    ]
+}

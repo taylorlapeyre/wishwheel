@@ -1,5 +1,7 @@
 /**
- * CreateGroupController
+ * HomeController
+ *
+ *
  *
  * The controller of the very first page the user hits, the homepage.
  *
@@ -7,6 +9,10 @@
  * DATE            BY        CHANGE REF  DESCRIPTION
  * ========    ==========    =========== =============
  * 11/7/14     Alex Clavelle 9057e41     initial
+ *
+ *
+ * @module Home
+ *
  *
  */
 
@@ -18,6 +24,9 @@ define([], function () {
     var messages = {
         forbidden: "Incorrect email or password"
     };
+    /**
+     * @class HomeController
+     */
     return [
         "$scope",
         "$state",
@@ -31,6 +40,8 @@ define([], function () {
 
             /**
              * toggles the side-menu
+             *
+             * @method showSideBar
              */
             $scope.showSideBar = function () {
                 $scope.RsideBar = !$scope.RsideBar;
@@ -38,11 +49,16 @@ define([], function () {
 
 
             /**
+             *
              * Reads the form it's attached to and uses AuthService.login to log the user in.
              * If login was successful and a token is received,
              *  navigate to the user's dash
              * else
              *  show an error
+             *
+             * @method login
+             *
+             *
              */
             $scope.login = function () {
                 AuthService

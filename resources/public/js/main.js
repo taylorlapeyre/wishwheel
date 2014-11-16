@@ -7,6 +7,9 @@
  * 11/7/14     Alex Clavelle 9057e41     initial
  *
  *
+ *
+ * @module Main
+ *
  */
 require.config({
 
@@ -33,10 +36,7 @@ require.config({
 });
 
 require(['app','angular', 'ngAnimate'],function(app,angular, ngAnimate){
-	
-	
 	angular.element(document).ready(function(){
 		angular.bootstrap(document,['app','ngAnimate']);
 	});
-
 });
