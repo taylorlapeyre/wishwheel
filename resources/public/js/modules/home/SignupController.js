@@ -15,6 +15,9 @@ define([],function(){
         '$state',
         'AuthService',
         function($scope,$state,AuthService){
+            /**
+             * Posts to the REST api to create a new account.
+             */
             $scope.createAccount = function(){
                 AuthService.createAccount($scope.form)
                     .success(function(data, status, headrs, config){

@@ -14,6 +14,10 @@ define([], function () {
         function($scope){
             $scope.groupmembers = [];
 
+            /***
+             * Adds a member to the list of members in the new group.
+             * @param {object} none, reads the form from the document.
+             */
             $scope.addMember = function () {
                 $scope.groupmembers.push({
                     name:$scope.form.name
@@ -21,6 +25,10 @@ define([], function () {
                 $scope.form.name = "";
             };
 
+            /***
+             * removes the member from the members array
+             * @param {int} $index the index of the user to remove from the new group.
+             */
             $scope.removeMember = function($index){
                 $scope.groupmembers.splice($index,1);
             };

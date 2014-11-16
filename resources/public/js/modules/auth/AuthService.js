@@ -21,10 +21,21 @@ define([], function () {
 
             var srvc = function () {
 
+                /**
+                 * Logs the user in
+                 * @param {object} form the user's login form (email & password)
+                 * @returns {HttpPromise} resolves when the user receives a valid token,
+                 * rejects when the credentials are bad.
+                 */
                 this.login = function (form) {
                     return $http.post(routes.login, form);
                 };
 
+                /**
+                 * Attempts to create an account.
+                 * @param form holds the user's information like email and password.
+                 * @returns {HttpPromise} resolves if the user was created, rejects if the user was not created.
+                 */
                 this.createAccount = function (form) {
                     var req = {
                         user:form

@@ -29,11 +29,21 @@ define([], function () {
             $scope.title = "Wish-list";
             $scope.RsideBar = false;
 
+            /**
+             * toggles the side-menu
+             */
             $scope.showSideBar = function () {
                 $scope.RsideBar = !$scope.RsideBar;
             };
 
 
+            /**
+             * Reads the form it's attached to and uses AuthService.login to log the user in.
+             * If login was successful and a token is received,
+             *  navigate to the user's dash
+             * else
+             *  show an error
+             */
             $scope.login = function () {
                 AuthService
                     .login($scope.form)
