@@ -1,3 +1,12 @@
+/**
+ * CreateGroupController
+ *
+ * The controller for the dialog to create a group.
+ * DATE            BY        CHANGE REF  DESCRIPTION
+ * ========    ==========    =========== =============
+ * 11/7/14     Alex Clavelle 9057e41     initial
+ *
+ */
 define([], function () {
     'use strict';
     return [

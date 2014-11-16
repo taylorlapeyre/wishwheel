@@ -1,3 +1,15 @@
+/**
+ * CreateGroupController
+ *
+ * The controller of the very first page the user hits, the homepage.
+ *
+ *
+ * DATE            BY        CHANGE REF  DESCRIPTION
+ * ========    ==========    =========== =============
+ * 11/7/14     Alex Clavelle 9057e41     initial
+ *
+ */
+
 'use strict';
 define([], function () {
     var statusCodes = {

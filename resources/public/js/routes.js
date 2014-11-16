@@ -1,3 +1,14 @@
+/**
+ * Routes definition
+ *
+ * All the possible states the application can be in, as well as their views,urls,and controllers.
+ *
+ *
+ * DATE            BY        CHANGE REF  DESCRIPTION
+ * ========    ==========    =========== =============
+ * 11/7/14     Alex Clavelle 9057e41     initial
+ */
+
 define([], function () {
 'use strict';
     var baseUrl = 'js/modules/';

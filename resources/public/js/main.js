@@ -1,3 +1,13 @@
+/**
+ * Main
+ *
+ * The module which sets up filepaths for loading via define calls and bootstraps the application.
+ * DATE            BY        CHANGE REF  DESCRIPTION
+ * ========    ==========    =========== =============
+ * 11/7/14     Alex Clavelle 9057e41     initial
+ *
+ *
+ */
 require.config({
 
 	paths:{
@@ -25,8 +35,6 @@ require.config({
 require(['app','angular', 'ngAnimate'],function(app,angular, ngAnimate){
 	
 	
-	
-
 	angular.element(document).ready(function(){
 		angular.bootstrap(document,['app','ngAnimate']);
 	});

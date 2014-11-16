@@ -1,3 +1,14 @@
+/**
+ * SignupController
+ *
+ * The controller for signing up for the website, handles validation.
+ * DATE            BY        CHANGE REF  DESCRIPTION
+ * ========    ==========    =========== =============
+ * 11/7/14     Alex Clavelle 9057e41     initial
+ *
+ *
+ *
+ */
 define([],function(){
     return [
         '$scope',

@@ -1,3 +1,17 @@
+/**
+ * Gruntfile
+ *
+ *
+ *
+ * The build file, similar to a makefile, pom.xml, etc.
+ *
+ * DATE            BY        CHANGE REF  DESCRIPTION
+ * ========    ==========    =========== =============
+ * 11/7/14     Alex Clavelle 9057e41     initial
+ *
+ *
+ */
+
 module.exports = function (grunt) {
 
     grunt.initConfig({
