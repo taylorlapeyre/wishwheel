@@ -1,4 +1,10 @@
 (ns wishwheel.handlers.items
+  " Item HTTP Handlers
+    Clojure functions for handling HTTP requests to item resources.
+
+    DATE      BY             CHANGE REF  DESCRIPTION
+    ========  ==========     =========== =============
+    11/9/14   Taylor Lapeyre 4a1e3c      get rid of stupid dumb validation stuff"
   (:require [ring.util.response :refer [response status not-found]]
             [wishwheel.models.item :as item]
             [wishwheel.models.user :as user]))

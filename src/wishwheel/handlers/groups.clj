@@ -1,4 +1,10 @@
 (ns wishwheel.handlers.groups
+  " Group HTTP Handlers
+    Clojure functions for handling HTTP requests to group resources.
+
+    DATE      BY             CHANGE REF  DESCRIPTION
+    ========  ==========     =========== =============
+    11/9/14   Taylor Lapeyre 4a1e3c      get rid of stupid dumb validation stuff"
   (:require [ring.util.response :refer [response status not-found]]
             [wishwheel.models.group :as group]
             [wishwheel.models.user  :as user]))
