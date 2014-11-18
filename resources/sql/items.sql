@@ -7,6 +7,7 @@
 /*
 /* REFERENCE:
 /* 
+<<<<<<< Updated upstream
 /* Change Ref 	Date		     By 				    DESCRIPTION
 /* ========== 	========= 	============== 	=====================
 /* 074e5e9	 	  11/16/14    John Anny	      update documentation
@@ -16,6 +17,17 @@
 /* f3d89e3		  10/28/14 	  Taylor Lapeyre	add test for valid gift assignment
 /* 7384813		  10/27/14	  Taylor Lapeyre	better items, api improvements
 /* 75b67c1		  10/27/14	  John Anny		    initial commit
+=======
+/* Change Ref   Date        By              DESCRIPTION
+/* ==========   =======     ============== 	=============
+/* 074e5e9      11/16/14    John Anny       update documentation & sql
+/* 8602cce      11/7/14     Taylor Lapeyre  fix all the bugs
+/* 73b62f6      11/7/14     Taylor Lapeyre  add image uploads
+/* dfaefc1      10/28/14    Taylor Lapeyre  documentation
+/* f3d89e3      10/28/14    Taylor Lapeyre  add test for valid gift assignment
+/* 7384813      10/27/14    Taylor Lapeyre  better items, api improvements
+/* 75b67c1      10/27/14    John Anny       initial commit
+>>>>>>> Stashed changes
 /*
 /*
 /****************************************************************************************/

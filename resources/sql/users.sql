@@ -9,12 +9,12 @@
 /* 
 /* Change Ref   Date        By              DESCRIPTION
 /* ==========   =========   ==============  =============
-/* dfaefc1		10/28/14	Taylor Lapeyre	document sql
-/* 1e10633		10/27/14	Taylor Lapeyre	controllers
-/* ad7ba78		10/27/14	Taylor Lapeyre	add front end, secure passwords
-/* 7ccba48		10/27/14	Taylor Lapeyre	initial commit
-/* 75b67c1		10/27/14	John Anny		initial commit
-/*
+/* 074e5e9      11/16/14    John Anny       update documentation & sql
+/* dfaefc1      10/28/14    Taylor Lapeyre  documentation
+/* 1e10633      10/27/14    Taylor Lapeyre  controllers
+/* ad7ba78      10/27/14    Taylor Lapeyre  add front end, secure passwords
+/* 7ccba48      10/27/14    Taylor Lapeyre  initial commit
+/* 75b67c1      10/27/14    John Anny       initial commit
 /*
 /*
 /****************************************************************************************/

@@ -8,6 +8,7 @@
 /*
 /* REFERENCE:
 /* 
+<<<<<<< Updated upstream
 /* Change Ref 	Date		  By 				      DESCRIPTION
 /* ==========   ======= 	============== 	=============
 /* 074e5e9	 	  11/16/14  John Anny	      update documentation
@@ -18,6 +19,17 @@
 /* 6f4fba5		  10/27/14	Taylor Lapeyre	groups controller
 /* 75b67c1		  10/27/14	John Anny		    initial commit
 /*
+=======
+/* Change Ref   Date        By              DESCRIPTION
+/* ==========   ========    ==============  =============
+/* 074e5e9      11/16/14    John Anny       update documentation & sql
+/* dfaefc1      10/28/14    Taylor Lapeyre  documentation
+/* a71f789      10/28/14    Taylor Lapeyre  typos
+/* 54423b3      10/28/14    Taylor Lapeyre  api token authentication
+/* c31fac1      10/28/14    Taylor Lapeyre  code documentation
+/* 6f4fba5      10/27/14    Taylor Lapeyre  groups controller
+/* 75b67c1      10/27/14    John Anny       initial commit
+>>>>>>> Stashed changes
 /*
 /*
 /****************************************************************************************/
