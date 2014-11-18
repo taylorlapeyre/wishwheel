@@ -1,3 +1,24 @@
+/****************************************************************************************/
+/*
+/* Users.sql
+/* 
+/* SQL tables for users in WishWheel. 
+/* Using functions such as finding by email/id/token/group.
+/*
+/* REFERENCE:
+/* 
+/* Change Ref   Date        By              DESCRIPTION
+/* ==========   =========   ==============  =============
+/* dfaefc1		10/28/14	Taylor Lapeyre	document sql
+/* 1e10633		10/27/14	Taylor Lapeyre	controllers
+/* ad7ba78		10/27/14	Taylor Lapeyre	add front end, secure passwords
+/* 7ccba48		10/27/14	Taylor Lapeyre	initial commit
+/* 75b67c1		10/27/14	John Anny		initial commit
+/*
+/*
+/*
+/****************************************************************************************/
+
 -- name: find-by-email
 -- Selects all users that have the given email address.
 SELECT id, email, first_name, last_name, password, token

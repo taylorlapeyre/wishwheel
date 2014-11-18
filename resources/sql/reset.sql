@@ -1,3 +1,23 @@
+/****************************************************************************************/
+/*
+/* Reset.sql
+/* 
+/* SQL tables for groups in WishWheel. 
+/* Using functions such as adding users, finding users/creator.
+/*
+/* REFERENCE:
+/* 
+/* Change Ref   Date        By              DESCRIPTION
+/* ==========   =========   ==============  =============
+/* 73b62f6      11/7/14     Taylor Lapeyre  add image uploads
+/* f3d89e3      10/28/14    Taylor Lapeyre  add test for valid gift assignment
+/* 6a7553b      10/28/14    Taylor Lapeyre  add sql reset
+/*
+/*
+/*
+/****************************************************************************************/
+
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
