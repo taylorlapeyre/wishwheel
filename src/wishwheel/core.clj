@@ -1,10 +1,5 @@
 (ns wishwheel.core
-  " Core
-    Defines our routes and provides the main HTTP handler.
-
-    DATE      BY             CHANGE REF  DESCRIPTION
-    ========  ==========     =========== =============
-    11/10/14  Taylor Lapeyre 8602cc      fix all the bugs"
+  "Defines our routes and provides the main HTTP handler."
   (:gen-class)
   (:use compojure.core
         wishwheel.images
