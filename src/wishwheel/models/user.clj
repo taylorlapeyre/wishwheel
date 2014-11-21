@@ -2,7 +2,7 @@
   "Functions for interfacing with the `users` table in the database."
   (:require [oj.core :as oj]
             [oj.modifiers :refer [query select where insert update]]
-            [wishwheel.config :refer [db]]
+            [environ.core :refer [env]]
             [wishwheel.models.wheel :as wheel]
             [crypto.password.bcrypt :as bcrypt]))
 
@@ -21,7 +21,7 @@
       (-> (query :users)
           (select cols)
           (where {:email email})
-          (oj/exec db)
+          (oj/exec (env :db))
           (first)))))
 
 (defn find-by-token
@@ -31,7 +31,7 @@
   (-> (query :users)
       (select safe-cols)
       (where {:token token})
-      (oj/exec db)
+      (oj/exec (env :db))
       (first)))
 
 (defn find-by-id
@@ -41,7 +41,7 @@
   (-> (query :users)
       (select safe-cols)
       (where {:id id})
-      (oj/exec db)
+      (oj/exec (env :db))
       (first)))
 
 (defn find-by-group
@@ -50,7 +50,7 @@
   [group_id]
   (let [memberships (-> (query :users_groups)
                         (where {:group_id group_id})
-                        (oj/exec db))]
+                        (oj/exec (env :db)))]
      (find-by-id (map :user_id memberships))))
 
 (defn create
@@ -60,7 +60,7 @@
   (let [user-data (assoc user-data :password (bcrypt/encrypt (:password user-data)))]
     (-> (query :users)
         (insert user-data)
-        (oj/exec db))))
+        (oj/exec (env :db)))))
 
 (defn authenticate
   "Given an email and password, finds the user with matching credentials."
@@ -68,7 +68,7 @@
   (when-let [user (-> (query :users)
                       (select (conj safe-cols :password :token))
                       (where {:email email})
-                      (oj/exec db)
+                      (oj/exec (env :db))
                       (first))]
     (when (bcrypt/check pswd (:password user))
       (dissoc user :password))))
@@ -80,7 +80,7 @@
   (when-let [user (-> (query :users)
                       (select [:token])
                       (where {:id id})
-                      (oj/exec db)
+                      (oj/exec (env :db))
                       (first))]
     (= token (:token user))))
 
@@ -88,8 +88,10 @@
   "Finds a user with a matching api token and passes it into the succcess
   function. If the user is not found, returns a 403."
   [token success-fn]
-  (if-let [api-user (find-by-token token)]
-    (success-fn api-user)
+  (if token
+    (if-let [api-user (find-by-token token)]
+      (success-fn api-user)
+      {:status 403 :body "Unauthorized"})
     {:status 403 :body "Unauthorized"}))
 
 (defn can-be-assigned-to-item?

@@ -1,8 +1,8 @@
 (ns wishwheel.models.group
   "Functions for interfacing with the `groups` table in the database."
   (:require [oj.core :as oj]
-            [oj.modifiers :refer [query select where insert update]]
-            [wishwheel.config :refer [db]]))
+            [oj.modifiers :refer [query select where insert update limit order]]
+            [environ.core :refer [env]]))
 
 (defn find-by-id
   "Given an id, finds the corresponding group in the database
@@ -10,7 +10,16 @@
   [id]
   (-> (query :groups)
       (where {:id id})
-      (oj/exec db)
+      (oj/exec (env :db))
+      (first)))
+
+(defn find-last
+  "Returns the most recently created group."
+  []
+  (-> (query :groups)
+      (order [:id :asc])
+      (limit 1)
+      (oj/exec (env :db))
       (first)))
 
 (defn create
@@ -19,7 +28,7 @@
   [group-data]
   (-> (query :groups)
       (insert group-data)
-      (oj/exec db)))
+      (oj/exec (env :db))))
 
 (defn add-user
   "Create a new group with the given data. Does not validate, will throw
@@ -27,12 +36,12 @@
   [group_id user_id]
   (-> (query :users_groups)
       (insert {:user_id user_id :group_id group_id})
-      (oj/exec db)))
+      (oj/exec (env :db))))
 
 (defn find-by-user
   "Given a user id, finds all groups that the user is a member of."
   [user_id]
   (let [memberships (-> (query :users_groups)
                         (where {:user_id user_id})
-                        (oj/exec db))]
+                        (oj/exec (env :db)))]
      (find-by-id (map :group_id memberships))))

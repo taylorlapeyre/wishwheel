@@ -21,7 +21,7 @@
   "Creates a new group."
   [{:keys [params body]}]
   (user/when-authenticated (:token body) (fn [api-user]
-    (try (group/create (:group body))
+    (try (group/create (assoc (:group body) :user_id (:id api-user)))
          (status (response (:group body)) 201)
     (catch Exception e
       (status (response (.getMessage e)) 422))))))
@@ -31,6 +31,7 @@
   [{:keys [params body]}]
   (user/when-authenticated (:token body) (fn [api-user]
     (if-let [group (group/find-by-id (:id params))]
-      (do (group/add-user (:id params) (:user_id body))
-          (response (group/find-by-id (:id params))))
-      (not-found "Group does not exist")))))
+      (let [the-user (user/find-by-email (:email body))]
+        (do (group/add-user (:id params) (:id the-user))
+            (response (group/find-by-id (:id params))))
+      (not-found "Group does not exist"))))))

@@ -2,21 +2,21 @@
   "Functions for interfacing with the `wheels` table in the database."
   (:require [oj.core :as oj]
             [oj.modifiers :refer [query select where insert update]]
-            [wishwheel.config :refer [db]]))
+            [environ.core :refer [env]]))
 
 (defn find-by-user
   "Given a user id, finds all wheels created by that user."
   [user-id]
   (-> (query :wheels)
       (where {:user_id user-id})
-      (oj/exec db)))
+      (oj/exec (env :db))))
 
 (defn find-by-group
   "Given an id, finds all wheels in the database that belong to that group."
   [group-id]
   (-> (query :wheels)
       (where {:group_id group-id})
-      (oj/exec db)))
+      (oj/exec (env :db))))
 
 (defn find-by-id
   "Given an id, finds the corresponding wheel in the database
@@ -24,7 +24,7 @@
   [id]
   (-> (query :wheels)
       (where {:id id})
-      (oj/exec db)
+      (oj/exec (env :db))
       (first)))
 
 (defn create
@@ -33,4 +33,4 @@
   [wheel-data]
   (-> (query :wheels)
       (insert wheel-data)
-      (oj/exec db)))
+      (oj/exec (env :db))))

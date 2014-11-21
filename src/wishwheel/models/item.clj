@@ -2,7 +2,7 @@
   "Functions for interfacing with the `items` table in the database."
   (:require [oj.core :as oj]
             [oj.modifiers :as ojm]
-            [wishwheel.config :refer [db]]))
+            [environ.core :refer [env]]))
 
 (defn find-by-wheel
   "Given a wheel id, finds all items that belong to it in the database
@@ -10,7 +10,7 @@
   [wheel_id]
   (-> (ojm/query :items)
       (ojm/where {:wheel_id wheel_id})
-      (oj/exec db)))
+      (oj/exec (env :db))))
 
 (defn find-by-id
   "Given an id, finds the corresponding item in the database
@@ -18,7 +18,7 @@
   [id]
   (-> (ojm/query :items)
       (ojm/where {:id id})
-      (oj/exec db)
+      (oj/exec (env :db))
       (first)))
 
 (defn create
@@ -27,7 +27,7 @@
   [item-data]
   (-> (ojm/query :items)
       (ojm/insert item-data)
-      (oj/exec db)))
+      (oj/exec (env :db))))
 
 (defn update
   "Given an id, updates that item with the supplied data. Does not validate,
@@ -36,4 +36,4 @@
   (-> (ojm/query :items)
       (ojm/where {:id id})
       (ojm/update item-data)
-      (oj/exec db)))
+      (oj/exec (env :db))))
