@@ -7,3 +7,6 @@
    :last_name "lapeyre"
    :email "taylor@lapeyre.com"
    :password "password"})
+
+(def wheel
+  {:name "get "})

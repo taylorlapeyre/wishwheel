@@ -5,7 +5,7 @@
             [environ.core :refer [env]]
             [oj.core :as oj]))
 
-(defn reset-db []
+(defn reset-db! []
   (oj/exec {:table :users_groups :delete :all} (env :db))
   (oj/exec {:table :groups :delete :all} (env :db))
   (oj/exec {:table :users  :delete :all} (env :db))
@@ -16,7 +16,7 @@
   {:expectations-options :in-context}
   [test-fn]
   (test-fn)
-  (reset-db))
+  (reset-db!))
 
 (defn hit-api
   ([url]

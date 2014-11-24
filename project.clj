@@ -17,10 +17,10 @@
   :plugins [[lein-ring "0.7.1"]
             [codox "0.8.10"]
             [lein-environ "1.0.0"]
-            [lein-expectations "0.0.7"]]
+            [lein-midje "3.1.3"]]
   :profiles {:test {:dependencies [[ring-mock "0.1.5"]
                                    [cheshire "5.3.1"]
-                                   [expectations "2.0.9"]]
+                                   [midje "1.6.3"]]
                     :env {:db {:subprotocol "mysql"
                                :subname "//127.0.0.1:3306/wishwheel3_test"
                                :user "root"
