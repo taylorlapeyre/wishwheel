@@ -173,8 +173,42 @@ VALUES ('Alex\'s Christmas List', 6, 13),
   ('Adam\'s Christmas List', 6, 14);
 
 INSERT INTO items (name, price, wheel_id, image)
-VALUES ('50in TV', 500, 11, '/public/images/system/zrt8j.png'),
-  ('Xbox One', 450, 11, '/public/images/system/kdu2.png'),
+VALUES ('50in TV', 500, 13, '/public/images/system/zrt8j.png'),
+  ('Xbox One', 450, 13, '/public/images/system/kdu2.png'),
 
-  ('Golf club', 93, 12, '/public/images/system/upsdj2.png'),
-  ('Raybans', 88, 12, '/public/images/system/kdns11.png');
+  ('Golf club', 93, 14, '/public/images/system/upsdj2.png'),
+  ('Raybans', 88, 14, '/public/images/system/kdns11.png');
+
+
+-- #####################################################
+
+-- John
+INSERT INTO users (email, password, first_name, last_name)
+VALUES('johnanny@email.com', 'helloworld1', 'John', 'Anny'),
+  ('jackanny@email.com', 'jackjill1', 'Jack', 'Anny'),
+  ('jessicamarie@email.com', 'jasmine17', 'Jessica', 'Anny');
+
+INSERT INTO groups (name, user_id)
+VALUES('Anny Squad', 15);
+
+INSERT INTO users_groups (user_id, group_id)
+VALUES (15, 7),(16, 7),(17, 7);
+
+INSERT INTO wheels (name, group_id, user_id)
+VALUES ('John\'s Christmas List', 7, 15),
+  ('Jack\'s Christmas List', 7, 16),
+  ('Jessica\'s Christmas List', 7, 17);
+
+INSERT INTO items (name, price, wheel_id, image)
+VALUES ('Samsung 40in TV', 450, 15 , '/public/images/system/tvsam.png'),
+  ('Xbox One', 325, 15, '/public/images/system/kdu2.png'),
+  ('Nexus 6', 678, 15, '/public/images/system/nex6.png'),
+
+  ('LSU BowTie', 65, 16 , '/public/images/system/bowtie7.png'),
+  ('Northface Vest', 120, 16, '/public/images/system/vest1.png'),
+  ('Ralph Lauren Blazer', 310, 16, '/public/images/system/upsdbj69.png'),
+
+  ('Steve Madden Boots', 93, 17, '/public/images/system/sexy37.png'),
+  ('Fossil Purse', 93, 17, '/public/images/system/stripepurse.png'),
+  ('Padma Sleeveless Dress', 298, 17, '/public/images/system/bcbgdress.png'),
+  ('Itunes Gift Card', 88, 17, '/public/images/system/cardgift.png');
