@@ -22,7 +22,7 @@ SELECT id, email, first_name, last_name, password, token
 FROM users u
 JOIN users_groups membership ON (
   membership.user_id  = u.id AND
-  membership.group_id = :group_id
+  membership.group_id = 1
 );
 
 -- name: insert!
