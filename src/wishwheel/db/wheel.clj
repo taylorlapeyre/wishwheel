@@ -1,4 +1,4 @@
-(ns wishwheel.models.wheel
+(ns wishwheel.db.wheel
   "Functions for interfacing with the `wheels` table in the database."
   (:require [oj.core :as oj]
             [oj.modifiers :refer [query select where insert update]]

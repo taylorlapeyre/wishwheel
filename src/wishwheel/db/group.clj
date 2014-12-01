@@ -1,4 +1,4 @@
-(ns wishwheel.models.group
+(ns wishwheel.db.group
   "Functions for interfacing with the `groups` table in the database."
   (:require [oj.core :as oj]
             [oj.modifiers :refer [query select where insert update limit order]]
@@ -10,15 +10,6 @@
   [id]
   (-> (query :groups)
       (where {:id id})
-      (oj/exec (env :db))
-      (first)))
-
-(defn find-last
-  "Returns the most recently created group."
-  []
-  (-> (query :groups)
-      (order [:id :asc])
-      (limit 1)
       (oj/exec (env :db))
       (first)))
 

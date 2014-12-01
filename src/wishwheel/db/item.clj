@@ -1,4 +1,4 @@
-(ns wishwheel.models.item
+(ns wishwheel.db.item
   "Functions for interfacing with the `items` table in the database."
   (:require [oj.core :as oj]
             [oj.modifiers :as ojm]

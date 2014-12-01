@@ -1,9 +1,9 @@
-(ns wishwheel.models.user
+(ns wishwheel.db.user
   "Functions for interfacing with the `users` table in the database."
   (:require [oj.core :as oj]
             [oj.modifiers :refer [query select where insert update]]
             [environ.core :refer [env]]
-            [wishwheel.models.wheel :as wheel]
+            [wishwheel.db.wheel :as wheel]
             [crypto.password.bcrypt :as bcrypt]))
 
 (def safe-cols
